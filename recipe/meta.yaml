@@ -1,5 +1,5 @@
 {% set name = "librealsense" %}
-{% set version = "2.47.0" %}
+{% set version = "2.49.0" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   - url: https://github.com/IntelRealSense/librealsense/archive/v{{ version }}.tar.gz
-    sha256: 00767dbc888bc3495aa8f38ec372231bb2c198efb003db3e86af6d2e5458d1bb
+    sha256: 2578ea0e75546aeebd908da732f52e0122bf37750d5a45f3adf92945a673aefd
 
 build:
   number: 0
