@@ -8,6 +8,8 @@ package:
 source:
   - url: https://github.com/IntelRealSense/librealsense/archive/v{{ version }}.tar.gz
     sha256: 2578ea0e75546aeebd908da732f52e0122bf37750d5a45f3adf92945a673aefd
+    patches:
+      - patches/0001_no_rosbag_inspector.patch
 
 build:
   number: 0
@@ -23,8 +25,22 @@ requirements:
     - cmake
     - ninja
     - {{ cdt('libudev') }}  # [linux]
+
+    - {{ cdt('mesa-libgl-devel') }}  # [linux]
+    - {{ cdt('mesa-dri-drivers') }}  # [linux]
+    - {{ cdt('libselinux') }}  # [linux]
+    - {{ cdt('libxdamage') }}  # [linux]
+    - {{ cdt('libxxf86vm') }}  # [linux]
+    - {{ cdt('libxext') }}     # [linux]
+    - {{ cdt('expat-devel') }}     # [linux]
   host:
     - libusb
+    - glfw
+    - xorg-libxfixes  # [linux]
+    - libglu
+  run:
+    - glfw
+    - libglu
 
 
 test:

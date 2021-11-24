@@ -11,8 +11,10 @@ cmake -GNinja \
       -DENABLE_CCACHE=OFF \
       -DBUILD_WITH_OPENMP=OFF \
       -DFORCE_RSUSB_BACKEND=ON \
-      -DBUILD_EXAMPLES=OFF \
+      -DBUILD_EXAMPLES=ON \
+      -DBUILD_GRAPHICAL_EXAMPLES=ON \
       -DBUILD_UNIT_TESTS=OFF \
+      -DCHECK_FOR_UPDATES=OFF \
       $SRC_DIR
 
 cmake --build . --config Release 

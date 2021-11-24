@@ -1,0 +1,13 @@
+diff --git a/tools/CMakeLists.txt b/tools/CMakeLists.txt
+index b1b967af2..31a1ae0b8 100644
+--- a/tools/CMakeLists.txt
++++ b/tools/CMakeLists.txt
+@@ -37,7 +37,7 @@ if(BUILD_EXAMPLES)
+         add_subdirectory(data-collect)
+         add_subdirectory(realsense-viewer)
+         add_subdirectory(depth-quality)
+-        add_subdirectory(rosbag-inspector)
++        #add_subdirectory(rosbag-inspector)
+         add_subdirectory(benchmark)
+     else()
+         if(ANDROID_NDK_TOOLCHAIN_INCLUDED)
