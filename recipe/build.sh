@@ -2,7 +2,7 @@
 
 mkdir build && cd build
 
-cmake -GNinja \
+cmake ${CMAKE_ARGS} -GNinja \
       -DCMAKE_INSTALL_PREFIX=$PREFIX \
       -DCMAKE_PREFIX_PATH=$PREFIX \
       -DCMAKE_BUILD_TYPE=Release \
