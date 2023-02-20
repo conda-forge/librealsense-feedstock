@@ -13,6 +13,7 @@ cmake ${CMAKE_ARGS} -GNinja \
       -DFORCE_RSUSB_BACKEND=ON \
       -DBUILD_EXAMPLES=OFF \
       -DBUILD_UNIT_TESTS=OFF \
+      -DCHECK_FOR_UPDATES=OFF \
       $SRC_DIR
 
 cmake --build . --config Release 
