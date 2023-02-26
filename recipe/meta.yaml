@@ -1,5 +1,7 @@
 {% set name = "librealsense" %}
 {% set version = "2.53.1" %}
+{% set cuda_enabled = cuda_compiler_version != "None" %}
+{% set build_ext = "cuda" if cuda_enabled else "cpu" %}
 
 package:
   name: {{ name }}
@@ -13,7 +15,9 @@ source:
 
 build:
   number: 0
+  string: h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}_{{ build_ext }}
   skip: true  # [win]
+  track_features: {{ "[librealsense-cuda]" if cuda_enabled else "" }}
   run_exports:
     # See https://github.com/IntelRealSense/librealsense/pull/3449
     - {{ pin_subpackage(name, max_pin='x.x') }}
@@ -22,6 +26,7 @@ requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
+    - {{ compiler("cuda") }}  # [cuda_compiler_version != "None"]
     - cmake
     - ninja
     - {{ cdt('libudev') }}  # [linux]
