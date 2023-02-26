@@ -8,6 +8,8 @@ package:
 source:
   - url: https://github.com/IntelRealSense/librealsense/archive/v{{ version }}.tar.gz
     sha256: e09d0cca0316fa02427ce749c4e9cc8d34e3a86c127b32a8dca3ef483e71e908
+    patches:
+      - fix_macos_arm64.patch
 
 build:
   number: 0

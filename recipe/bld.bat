@@ -15,6 +15,7 @@ cmake -GNinja ^
     -DBUILD_EXAMPLES=OFF ^
     -DBUILD_UNIT_TESTS=OFF ^
     -DLIBUSB_LIB=%LIBRARY_LIB%\libusb-1.0.lib ^
+    -DCHECK_FOR_UPDATES=OFF ^
     %SRC_DIR%
 if errorlevel 1 exit 1
 
