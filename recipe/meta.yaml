@@ -12,7 +12,7 @@ source:
     sha256: e09d0cca0316fa02427ce749c4e9cc8d34e3a86c127b32a8dca3ef483e71e908
 
 build:
-  number: 0
+  number: 1
   string: h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}_{{ build_ext }}
   skip: true  # [win]
   track_features: {{ "[librealsense-cuda]" if cuda_enabled else "" }}
@@ -27,7 +27,7 @@ requirements:
     - {{ compiler("cuda") }}  # [cuda_compiler_version != "None"]
     - cmake
     - ninja
-    - {{ cdt('libudev') }}  # [linux]
+    - libudev  # [linux]
   host:
     - libusb
 
