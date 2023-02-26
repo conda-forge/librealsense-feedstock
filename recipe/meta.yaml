@@ -30,7 +30,11 @@ requirements:
     - cmake
     - ninja
     - libudev  # [linux]
+    - sysroot_linux-64 2.17  # [linux64 and cdt_name!='cos6']
+    # need a CDT for libudev for cos6, proper package available for cos7 (below)
+    - {{ cdt('libudev-devel') }}  # [linux and cdt_name=='cos6']
   host:
+    - libudev  # [linux and cdt_name!='cos6']
     - libusb
 
 
