@@ -14,7 +14,7 @@ source:
       - fix_macos_arm64.patch
 
 build:
-  number: 1
+  number: 2
   string: h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}_{{ build_ext }}
   skip: true  # [win]
   track_features: {{ "[librealsense-cuda]" if cuda_enabled else "" }}
