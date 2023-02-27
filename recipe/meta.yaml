@@ -16,7 +16,7 @@ source:
 build:
   number: 2
   string: h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}_{{ build_ext }}
-  skip: true  # [win]
+  skip: true  # [win or cuda_compiler_version == "10.2"]
   track_features: {{ "[librealsense-cuda]" if cuda_enabled else "" }}
   run_exports:
     # See https://github.com/IntelRealSense/librealsense/pull/3449
