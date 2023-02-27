@@ -7,6 +7,28 @@ if [[ "${target_platform}" == osx-* ]]; then
     CMAKE_ARGS="${CMAKE_ARGS} -DCMAKE_THREAD_LIBS_INIT=-lpthread -DCMAKE_HAVE_THREADS_LIBRARY=1 -DCMAKE_USE_WIN32_THREADS_INIT=0 -DCMAKE_USE_PTHREADS_INIT=1 -DTHREADS_PREFER_PTHREAD_FLAG=ON"
 fi
 
+# Enable CUDA support
+if [[ ! -z "${cuda_compiler_version+x}" && "${cuda_compiler_version}" != "None" ]]
+then
+    if [[ -z "${CUDA_HOME+x}" ]]
+    then
+        echo "cuda_compiler_version=${cuda_compiler_version} CUDA_HOME=$CUDA_HOME"
+        CUDA_GDB_EXECUTABLE=$(which cuda-gdb || exit 0)
+        if [[ -n "$CUDA_GDB_EXECUTABLE" ]]
+        then
+            CUDA_HOME=$(dirname $(dirname $CUDA_GDB_EXECUTABLE))
+        else
+            echo "Cannot determine CUDA_HOME: cuda-gdb not in PATH"
+            return 1
+        fi
+    fi
+    CMAKE_ARGS="${CMAKE_ARGS} -DBUILD_WITH_CUDA=ON -DCUDA_TOOLKIT_ROOT_DIR=${CUDA_HOME} -DCMAKE_LIBRARY_PATH=${CUDA_HOME}/lib64/stubs"
+else
+    CMAKE_ARGS="${CMAKE_ARGS} -DBUILD_WITH_CUDA=OFF"
+fi
+
+
+
 cmake ${CMAKE_ARGS} -GNinja \
       -DCMAKE_INSTALL_PREFIX=$PREFIX \
       -DCMAKE_PREFIX_PATH=$PREFIX \
