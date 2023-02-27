@@ -3,7 +3,7 @@
 mkdir build && cd build
 
 # Workaround for https://github.com/IntelRealSense/librealsense/issues/8250#issuecomment-768309524
-if [[ "${target_platform}" == osx-* ]]; then
+if [[ "${target_platform}" == "osx-arm64" || "${target_platform}" == "linux-ppc64le" ]]; then
     CMAKE_ARGS="${CMAKE_ARGS} -DCMAKE_THREAD_LIBS_INIT=-lpthread -DCMAKE_HAVE_THREADS_LIBRARY=1 -DCMAKE_USE_WIN32_THREADS_INIT=0 -DCMAKE_USE_PTHREADS_INIT=1 -DTHREADS_PREFER_PTHREAD_FLAG=ON"
 fi
 
