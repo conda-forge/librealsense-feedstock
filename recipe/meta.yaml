@@ -15,7 +15,7 @@ source:
       - fix_ppc64le.patch  # [ppc64le]
 
 build:
-  number: 4
+  number: 5
   string: h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}_{{ build_ext }}
   skip: true  # [win or cuda_compiler_version == "10.2"]
   track_features: {{ "[librealsense-cuda]" if cuda_enabled else "" }}
@@ -37,7 +37,8 @@ requirements:
   host:
     - libudev  # [linux and cdt_name!='cos6']
     - libusb
-
+  run:
+    - __cuda  # [cuda_compiler_version != "None"]
 
 test:
   commands:
