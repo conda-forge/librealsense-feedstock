@@ -1,5 +1,5 @@
 {% set name = "librealsense" %}
-{% set version = "2.53.1" %}
+{% set version = "2.54.1" %}
 {% set cuda_enabled = cuda_compiler_version != "None" %}
 {% set build_ext = "cuda" if cuda_enabled else "cpu" %}
 
@@ -9,13 +9,13 @@ package:
 
 source:
   - url: https://github.com/IntelRealSense/librealsense/archive/v{{ version }}.tar.gz
-    sha256: e09d0cca0316fa02427ce749c4e9cc8d34e3a86c127b32a8dca3ef483e71e908
+    sha256: 0aac1c8ebaf87a989507ba1dd374ab7cdecedb792a692b5c3aadb1b7e61b585e
     patches:
       - fix_macos_arm64.patch
       - fix_ppc64le.patch  # [ppc64le]
 
 build:
-  number: 6
+  number: 0
   string: h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}_{{ build_ext }}
   skip: true  # [win or cuda_compiler_version == "10.2"]
   track_features: {{ "[librealsense-cuda]" if cuda_enabled else "" }}
