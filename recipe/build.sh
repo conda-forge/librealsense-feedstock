@@ -22,11 +22,11 @@ then
             return 1
         fi
     fi
-    CMAKE_ARGS="${CMAKE_ARGS} -DBUILD_WITH_CUDA=ON -DCUDA_TOOLKIT_ROOT_DIR=${CUDA_HOME} -DCMAKE_LIBRARY_PATH=${CUDA_HOME}/lib64/stubs"
+    CMAKE_ARGS="${CMAKE_ARGS} -DBUILD_WITH_CUDA=ON -DCUDA_TOOLKIT_ROOT_DIR=${CUDA_HOME} -DCMAKE_LIBRARY_PATH=${CUDA_HOME}/lib64/stubs -DCMAKE_CUDA_ARCHITECTURES=all"
 elif [[ ! -z "${cuda_compiler_version+x}" && "${cuda_compiler_version}" != "None" ]]
 then
     echo "==> cuda_compiler_version=${cuda_compiler_version}, use CMake's CUDA support"
-    CMAKE_ARGS="${CMAKE_ARGS} -DBUILD_WITH_CUDA=ON"
+    CMAKE_ARGS="${CMAKE_ARGS} -DBUILD_WITH_CUDA=ON -DCMAKE_CUDA_ARCHITECTURES=all"
 else
     echo "==> cuda_compiler_version=${cuda_compiler_version}, disable CUDA support"
     CMAKE_ARGS="${CMAKE_ARGS} -DBUILD_WITH_CUDA=OFF"
@@ -46,6 +46,7 @@ cmake ${CMAKE_ARGS} -GNinja \
       -DBUILD_EXAMPLES=OFF \
       -DBUILD_UNIT_TESTS=OFF \
       -DCHECK_FOR_UPDATES=OFF \
+      -DCMAKE_VERBOSE_MAKEFILE=ON \
       $SRC_DIR
 
 cmake --build . --config Release 

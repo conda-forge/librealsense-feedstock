@@ -15,7 +15,7 @@ source:
       - fix_ppc64le.patch  # [ppc64le]
 
 build:
-  number: 0
+  number: 1
   string: h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}_{{ build_ext }}
   skip: true  # [win or cuda_compiler_version == "10.2"]
   track_features: {{ "[librealsense-cuda]" if cuda_enabled else "" }}
