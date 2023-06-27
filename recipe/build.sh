@@ -46,6 +46,7 @@ cmake ${CMAKE_ARGS} -GNinja \
       -DBUILD_EXAMPLES=OFF \
       -DBUILD_UNIT_TESTS=OFF \
       -DCHECK_FOR_UPDATES=OFF \
+      -DCMAKE_VERBOSE_MAKEFILE=ON \
       $SRC_DIR
 
 cmake --build . --config Release 
