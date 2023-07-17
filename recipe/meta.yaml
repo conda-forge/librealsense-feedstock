@@ -25,6 +25,8 @@ build:
 
 requirements:
   build:
+    - python                                 # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - {{ compiler("cuda") }}  # [cuda_compiler_version != "None"]
@@ -35,9 +37,11 @@ requirements:
     # need a CDT for libudev for cos6, proper package available for cos7 (below)
     - {{ cdt('libudev-devel') }}  # [linux and cdt_name=='cos6']
   host:
+    - python
     - libudev  # [linux and cdt_name!='cos6']
     - libusb
   run:
+    - python
     - __cuda  # [cuda_compiler_version != "None"]
 
 test:
