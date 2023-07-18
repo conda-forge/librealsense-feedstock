@@ -43,7 +43,8 @@ cmake ${CMAKE_ARGS} -GNinja \
       -DENABLE_CCACHE=OFF \
       -DBUILD_WITH_OPENMP=OFF \
       -DFORCE_RSUSB_BACKEND=ON \
-      -DBUILD_PYTHON_BINDINGS=ON \
+      -DBUILD_PYTHON_BINDINGS:bool=true \
+      -DPYTHON_EXECUTABLE="$PREFIX/bin/python" \
       -DBUILD_EXAMPLES=OFF \
       -DBUILD_UNIT_TESTS=OFF \
       -DCHECK_FOR_UPDATES=OFF \
@@ -51,4 +52,7 @@ cmake ${CMAKE_ARGS} -GNinja \
       $SRC_DIR
 
 cmake --build . --config Release 
-cmake --install . --config Release 
+cmake --install . --config Release
+
+# Copy pyrealsense files to site-packages (there is probably a bettter way to do this with -DPYTHON_INSTALL_DIR)
+mv $PREFIX/OFF/* $PREFIX/lib/python3.[0-9]/site-packages/

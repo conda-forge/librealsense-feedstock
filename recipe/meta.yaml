@@ -1,5 +1,6 @@
 {% set name = "librealsense" %}
 {% set version = "2.54.1" %}
+{% set pip_name = "pyrealsense2" %}
 {% set cuda_enabled = cuda_compiler_version != "None" %}
 {% set build_ext = "cuda" if cuda_enabled else "cpu" %}
 
@@ -22,6 +23,7 @@ build:
   run_exports:
     # See https://github.com/IntelRealSense/librealsense/pull/3449
     - {{ pin_subpackage(name, max_pin='x.x') }}
+    - {{ PYTHON }} ./wrappers/python/setup.py install
 
 requirements:
   build:
@@ -45,6 +47,8 @@ requirements:
     - __cuda  # [cuda_compiler_version != "None"]
 
 test:
+  imports:
+    - pyrealsense2
   commands:
     - test -f ${PREFIX}/include/librealsense2/rs.hpp  # [not win]
     - test -f ${PREFIX}/lib/librealsense2.so  # [linux]
