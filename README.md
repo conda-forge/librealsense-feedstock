@@ -27,108 +27,66 @@ Current build status
         <table>
           <thead><tr><th>Variant</th><th>Status</th></tr></thead>
           <tbody><tr>
-              <td>linux_64_c_compiler_version10cdt_namecos7cuda_compilernvcccuda_compiler_version11.1cxx_compiler_version10python3.10.____cpython</td>
+              <td>linux_64_c_compiler_version10cdt_namecos7cuda_compiler_version11.2cxx_compiler_version10python3.10.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=11816&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/librealsense-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_c_compiler_version10cdt_namecos7cuda_compilernvcccuda_compiler_version11.1cxx_compiler_version10python3.10.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/librealsense-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_c_compiler_version10cdt_namecos7cuda_compiler_version11.2cxx_compiler_version10python3.10.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_c_compiler_version10cdt_namecos7cuda_compilernvcccuda_compiler_version11.1cxx_compiler_version10python3.8.____cpython</td>
+              <td>linux_64_c_compiler_version10cdt_namecos7cuda_compiler_version11.2cxx_compiler_version10python3.8.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=11816&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/librealsense-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_c_compiler_version10cdt_namecos7cuda_compilernvcccuda_compiler_version11.1cxx_compiler_version10python3.8.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/librealsense-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_c_compiler_version10cdt_namecos7cuda_compiler_version11.2cxx_compiler_version10python3.8.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_c_compiler_version10cdt_namecos7cuda_compilernvcccuda_compiler_version11.1cxx_compiler_version10python3.9.____cpython</td>
+              <td>linux_64_c_compiler_version10cdt_namecos7cuda_compiler_version11.2cxx_compiler_version10python3.9.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=11816&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/librealsense-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_c_compiler_version10cdt_namecos7cuda_compilernvcccuda_compiler_version11.1cxx_compiler_version10python3.9.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/librealsense-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_c_compiler_version10cdt_namecos7cuda_compiler_version11.2cxx_compiler_version10python3.9.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_c_compiler_version10cdt_namecos7cuda_compilernvcccuda_compiler_version11.2cxx_compiler_version10python3.10.____cpython</td>
+              <td>linux_64_c_compiler_version12cdt_namecos6cuda_compiler_versionNonecxx_compiler_version12python3.10.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=11816&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/librealsense-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_c_compiler_version10cdt_namecos7cuda_compilernvcccuda_compiler_version11.2cxx_compiler_version10python3.10.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/librealsense-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_c_compiler_version12cdt_namecos6cuda_compiler_versionNonecxx_compiler_version12python3.10.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_c_compiler_version10cdt_namecos7cuda_compilernvcccuda_compiler_version11.2cxx_compiler_version10python3.8.____cpython</td>
+              <td>linux_64_c_compiler_version12cdt_namecos6cuda_compiler_versionNonecxx_compiler_version12python3.8.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=11816&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/librealsense-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_c_compiler_version10cdt_namecos7cuda_compilernvcccuda_compiler_version11.2cxx_compiler_version10python3.8.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/librealsense-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_c_compiler_version12cdt_namecos6cuda_compiler_versionNonecxx_compiler_version12python3.8.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_c_compiler_version10cdt_namecos7cuda_compilernvcccuda_compiler_version11.2cxx_compiler_version10python3.9.____cpython</td>
+              <td>linux_64_c_compiler_version12cdt_namecos6cuda_compiler_versionNonecxx_compiler_version12python3.9.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=11816&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/librealsense-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_c_compiler_version10cdt_namecos7cuda_compilernvcccuda_compiler_version11.2cxx_compiler_version10python3.9.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/librealsense-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_c_compiler_version12cdt_namecos6cuda_compiler_versionNonecxx_compiler_version12python3.9.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_c_compiler_version12cdt_namecos6cuda_compilerNonecuda_compiler_versionNonecxx_compiler_version12python3.10.____cpython</td>
+              <td>linux_64_c_compiler_version12cdt_namecos7cuda_compiler_version12.0cxx_compiler_version12python3.10.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=11816&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/librealsense-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_c_compiler_version12cdt_namecos6cuda_compilerNonecuda_compiler_versionNonecxx_compiler_version12python3.10.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/librealsense-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_c_compiler_version12cdt_namecos7cuda_compiler_version12.0cxx_compiler_version12python3.10.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_c_compiler_version12cdt_namecos6cuda_compilerNonecuda_compiler_versionNonecxx_compiler_version12python3.8.____cpython</td>
+              <td>linux_64_c_compiler_version12cdt_namecos7cuda_compiler_version12.0cxx_compiler_version12python3.8.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=11816&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/librealsense-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_c_compiler_version12cdt_namecos6cuda_compilerNonecuda_compiler_versionNonecxx_compiler_version12python3.8.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/librealsense-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_c_compiler_version12cdt_namecos7cuda_compiler_version12.0cxx_compiler_version12python3.8.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_c_compiler_version12cdt_namecos6cuda_compilerNonecuda_compiler_versionNonecxx_compiler_version12python3.9.____cpython</td>
+              <td>linux_64_c_compiler_version12cdt_namecos7cuda_compiler_version12.0cxx_compiler_version12python3.9.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=11816&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/librealsense-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_c_compiler_version12cdt_namecos6cuda_compilerNonecuda_compiler_versionNonecxx_compiler_version12python3.9.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_64_c_compiler_version12cdt_namecos7cuda_compilercuda-nvcccuda_compiler_version12.0cxx_compiler_version12python3.10.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=11816&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/librealsense-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_c_compiler_version12cdt_namecos7cuda_compilercuda-nvcccuda_compiler_version12.0cxx_compiler_version12python3.10.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_64_c_compiler_version12cdt_namecos7cuda_compilercuda-nvcccuda_compiler_version12.0cxx_compiler_version12python3.8.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=11816&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/librealsense-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_c_compiler_version12cdt_namecos7cuda_compilercuda-nvcccuda_compiler_version12.0cxx_compiler_version12python3.8.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_64_c_compiler_version12cdt_namecos7cuda_compilercuda-nvcccuda_compiler_version12.0cxx_compiler_version12python3.9.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=11816&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/librealsense-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_c_compiler_version12cdt_namecos7cuda_compilercuda-nvcccuda_compiler_version12.0cxx_compiler_version12python3.9.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_64_c_compiler_version9cdt_namecos7cuda_compilernvcccuda_compiler_version11.0cxx_compiler_version9python3.10.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=11816&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/librealsense-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_c_compiler_version9cdt_namecos7cuda_compilernvcccuda_compiler_version11.0cxx_compiler_version9python3.10.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_64_c_compiler_version9cdt_namecos7cuda_compilernvcccuda_compiler_version11.0cxx_compiler_version9python3.8.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=11816&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/librealsense-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_c_compiler_version9cdt_namecos7cuda_compilernvcccuda_compiler_version11.0cxx_compiler_version9python3.8.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_64_c_compiler_version9cdt_namecos7cuda_compilernvcccuda_compiler_version11.0cxx_compiler_version9python3.9.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=11816&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/librealsense-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_c_compiler_version9cdt_namecos7cuda_compilernvcccuda_compiler_version11.0cxx_compiler_version9python3.9.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/librealsense-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_c_compiler_version12cdt_namecos7cuda_compiler_version12.0cxx_compiler_version12python3.9.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
@@ -174,45 +132,45 @@ Current build status
                 </a>
               </td>
             </tr><tr>
-              <td>linux_ppc64le_c_compiler_version10cuda_compiler_version11.2cxx_compiler_version10python3.10.____cpython</td>
+              <td>linux_ppc64le_c_compiler_version10cuda_compilernvcccuda_compiler_version11.2cxx_compiler_version10python3.10.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=11816&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/librealsense-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_ppc64le_c_compiler_version10cuda_compiler_version11.2cxx_compiler_version10python3.10.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/librealsense-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_ppc64le_c_compiler_version10cuda_compilernvcccuda_compiler_version11.2cxx_compiler_version10python3.10.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_ppc64le_c_compiler_version10cuda_compiler_version11.2cxx_compiler_version10python3.8.____cpython</td>
+              <td>linux_ppc64le_c_compiler_version10cuda_compilernvcccuda_compiler_version11.2cxx_compiler_version10python3.8.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=11816&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/librealsense-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_ppc64le_c_compiler_version10cuda_compiler_version11.2cxx_compiler_version10python3.8.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/librealsense-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_ppc64le_c_compiler_version10cuda_compilernvcccuda_compiler_version11.2cxx_compiler_version10python3.8.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_ppc64le_c_compiler_version10cuda_compiler_version11.2cxx_compiler_version10python3.9.____cpython</td>
+              <td>linux_ppc64le_c_compiler_version10cuda_compilernvcccuda_compiler_version11.2cxx_compiler_version10python3.9.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=11816&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/librealsense-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_ppc64le_c_compiler_version10cuda_compiler_version11.2cxx_compiler_version10python3.9.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/librealsense-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_ppc64le_c_compiler_version10cuda_compilernvcccuda_compiler_version11.2cxx_compiler_version10python3.9.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_ppc64le_c_compiler_version12cuda_compiler_versionNonecxx_compiler_version12python3.10.____cpython</td>
+              <td>linux_ppc64le_c_compiler_version12cuda_compilerNonecuda_compiler_versionNonecxx_compiler_version12python3.10.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=11816&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/librealsense-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_ppc64le_c_compiler_version12cuda_compiler_versionNonecxx_compiler_version12python3.10.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/librealsense-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_ppc64le_c_compiler_version12cuda_compilerNonecuda_compiler_versionNonecxx_compiler_version12python3.10.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_ppc64le_c_compiler_version12cuda_compiler_versionNonecxx_compiler_version12python3.8.____cpython</td>
+              <td>linux_ppc64le_c_compiler_version12cuda_compilerNonecuda_compiler_versionNonecxx_compiler_version12python3.8.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=11816&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/librealsense-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_ppc64le_c_compiler_version12cuda_compiler_versionNonecxx_compiler_version12python3.8.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/librealsense-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_ppc64le_c_compiler_version12cuda_compilerNonecuda_compiler_versionNonecxx_compiler_version12python3.8.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_ppc64le_c_compiler_version12cuda_compiler_versionNonecxx_compiler_version12python3.9.____cpython</td>
+              <td>linux_ppc64le_c_compiler_version12cuda_compilerNonecuda_compiler_versionNonecxx_compiler_version12python3.9.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=11816&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/librealsense-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_ppc64le_c_compiler_version12cuda_compiler_versionNonecxx_compiler_version12python3.9.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/librealsense-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_ppc64le_c_compiler_version12cuda_compilerNonecuda_compiler_versionNonecxx_compiler_version12python3.9.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
@@ -271,6 +229,8 @@ Current release info
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-librealsense-green.svg)](https://anaconda.org/conda-forge/librealsense) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/librealsense.svg)](https://anaconda.org/conda-forge/librealsense) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/librealsense.svg)](https://anaconda.org/conda-forge/librealsense) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/librealsense.svg)](https://anaconda.org/conda-forge/librealsense) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-librealsense2-green.svg)](https://anaconda.org/conda-forge/librealsense2) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/librealsense2.svg)](https://anaconda.org/conda-forge/librealsense2) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/librealsense2.svg)](https://anaconda.org/conda-forge/librealsense2) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/librealsense2.svg)](https://anaconda.org/conda-forge/librealsense2) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-pyrealsense2-green.svg)](https://anaconda.org/conda-forge/pyrealsense2) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/pyrealsense2.svg)](https://anaconda.org/conda-forge/pyrealsense2) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/pyrealsense2.svg)](https://anaconda.org/conda-forge/pyrealsense2) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/pyrealsense2.svg)](https://anaconda.org/conda-forge/pyrealsense2) |
 
 Installing librealsense
 =======================
@@ -282,16 +242,16 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `librealsense` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `librealsense, librealsense2, pyrealsense2` can be installed with `conda`:
 
 ```
-conda install librealsense
+conda install librealsense librealsense2 pyrealsense2
 ```
 
 or with `mamba`:
 
 ```
-mamba install librealsense
+mamba install librealsense librealsense2 pyrealsense2
 ```
 
 It is possible to list all of the versions of `librealsense` available on your platform with `conda`:
