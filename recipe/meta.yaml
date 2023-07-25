@@ -1,8 +1,9 @@
 {% set name = "librealsense" %}
 {% set version = "2.54.1" %}
-{% set pip_name = "pyrealsense2" %}
 {% set cuda_enabled = cuda_compiler_version != "None" %}
 {% set build_ext = "cuda" if cuda_enabled else "cpu" %}
+{% set PY_VER_MAJOR = PY_VER.split('.')[0] %}
+{% set PY_VER_MINOR = PY_VER.split('.')[1] %}
 
 package:
   name: {{ name }}
@@ -17,13 +18,15 @@ source:
 
 build:
   number: 2
-  string: h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}_{{ build_ext }}
+  string: py{{ PY_VER_MAJOR }}{{ PY_VER_MINOR }}h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}
   skip: true  # [win or cuda_compiler_version == "10.2"]
   track_features: {{ "[librealsense-cuda]" if cuda_enabled else "" }}
   run_exports:
     # See https://github.com/IntelRealSense/librealsense/pull/3449
     - {{ pin_subpackage(name, max_pin='x.x') }}
-    - {{ PYTHON }} ./wrappers/python/setup.py install
+    # - {{ PYTHON }} ./wrappers/python/setup.py install
+  ignore_run_exports_from:
+    - python
 
 requirements:
   build:
@@ -46,18 +49,56 @@ requirements:
     - python
     - __cuda  # [cuda_compiler_version != "None"]
 
-test:
-  imports:
-    - pyrealsense2
-  commands:
-    - test -f ${PREFIX}/include/librealsense2/rs.hpp  # [not win]
-    - test -f ${PREFIX}/lib/librealsense2.so  # [linux]
-    - test -f ${PREFIX}/lib/librealsense2.dylib  # [osx]
-    - test -f ${PREFIX}/lib/cmake/realsense2/realsense2Config.cmake  # [not win]
-    - if exist %PREFIX%\\Library\\include\\librealsense2\\rs.hpp (exit 0) else (exit 1)  # [win]
-    - if exist $PREFIX$\\Library\\lib\\realsense2.lib (exit 0) else (exit 1)  # [win]
-    - if exist $PREFIX$\\Library\\bin\\realsense2.dll (exit 0) else (exit 1)  # [win]
-    - if exist %PREFIX%\\Library\\lib\cmake\\realsense2\\realsense2Config.cmake (exit 0) else (exit 1)  # [win]
+
+outputs:
+  - name: librealsense
+  - name: librealsense2
+    build:
+      string: py{{ PY_VER_MAJOR }}{{ PY_VER_MINOR }}h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}
+    requirements:
+      host:
+        # Explicitely add a python requirement so that the hash changes between
+        # opencv    for pypy36 and python3.6
+        # similarly for pypy37 and python3.7
+        - python
+        - libudev  # [linux and cdt_name!='cos6']
+        - libusb
+      run:
+        - {{ pin_subpackage('librealsense', exact=True) }}
+        - {{ pin_subpackage('pyrealsense2', exact=True) }}
+    test:
+      commands:
+        - test -f ${PREFIX}/include/librealsense2/rs.hpp  # [not win]
+        - test -f ${PREFIX}/lib/librealsense2.so  # [linux]
+        - test -f ${PREFIX}/lib/librealsense2.dylib  # [osx]
+        - test -f ${PREFIX}/lib/cmake/realsense2/realsense2Config.cmake  # [not win]
+        - if exist %PREFIX%\\Library\\include\\librealsense2\\rs.hpp (exit 0) else (exit 1)  # [win]
+        - if exist $PREFIX$\\Library\\lib\\realsense2.lib (exit 0) else (exit 1)  # [win]
+        - if exist $PREFIX$\\Library\\bin\\realsense2.dll (exit 0) else (exit 1)  # [win]
+        - if exist %PREFIX%\\Library\\lib\cmake\\realsense2\\realsense2Config.cmake (exit 0) else (exit 1)  # [win]
+
+  - name: pyrealsense2
+    build:
+      string: py{{ PY_VER_MAJOR }}{{ PY_VER_MINOR }}h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}
+      run_exports:
+        # Should we even have this???
+        # don't pin the python version so hard.
+        # Actually, I have found pretty good compatibility in the python
+        # package
+        - {{ pin_subpackage('pyrealsense2') }}
+    requirements:
+      # There is no build script, but I just want it to think
+      # that it needs python and numpy at build time
+      host:
+        - python
+        - numpy
+      run:
+        - python
+        - {{ pin_compatible('numpy') }}
+        - {{ pin_subpackage('librealsense', exact=True) }}
+    test:
+      imports:
+        - pyrealsense2
 
 about:
   home: https://github.com/IntelRealSense/librealsense
