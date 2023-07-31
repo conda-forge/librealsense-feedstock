@@ -44,6 +44,7 @@ cmake ${CMAKE_ARGS} -GNinja \
       -DBUILD_WITH_OPENMP=OFF \
       -DFORCE_RSUSB_BACKEND=ON \
       -DBUILD_PYTHON_BINDINGS:bool=true \
+      -DPYTHON_INSTALL_DIR="$SP_DIR" \
       -DPYTHON_EXECUTABLE="$PREFIX/bin/python" \
       -DBUILD_EXAMPLES=OFF \
       -DBUILD_UNIT_TESTS=OFF \
@@ -53,6 +54,3 @@ cmake ${CMAKE_ARGS} -GNinja \
 
 cmake --build . --config Release 
 cmake --install . --config Release
-
-# Copy pyrealsense files to site-packages
-mv $PREFIX/OFF/* $SP_DIR/
