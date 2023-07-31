@@ -54,5 +54,5 @@ cmake ${CMAKE_ARGS} -GNinja \
 cmake --build . --config Release 
 cmake --install . --config Release
 
-# Copy pyrealsense files to site-packages (there is probably a bettter way to do this with -DPYTHON_INSTALL_DIR)
-mv $PREFIX/OFF/* $PREFIX/lib/python3.[0-9]/site-packages/
+# Copy pyrealsense files to site-packages
+mv $PREFIX/OFF/* $SP_DIR/
