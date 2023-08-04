@@ -52,7 +52,6 @@ requirements:
 
 outputs:
   - name: librealsense
-  - name: librealsense2
     build:
       string: py{{ PY_VER_MAJOR }}{{ PY_VER_MINOR }}h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}_{{ build_ext }}
     requirements:
@@ -63,9 +62,8 @@ outputs:
         - python
         - libudev  # [linux and cdt_name!='cos6']
         - libusb
-      run:
-        - {{ pin_subpackage('librealsense', exact=True) }}
-        - {{ pin_subpackage('pyrealsense2', exact=True) }}
+      # run:
+        # - {{ pin_subpackage('pyrealsense2', exact=True) }}
     test:
       commands:
         - test -f ${PREFIX}/include/librealsense2/rs.hpp  # [not win]

@@ -229,7 +229,6 @@ Current release info
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-librealsense-green.svg)](https://anaconda.org/conda-forge/librealsense) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/librealsense.svg)](https://anaconda.org/conda-forge/librealsense) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/librealsense.svg)](https://anaconda.org/conda-forge/librealsense) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/librealsense.svg)](https://anaconda.org/conda-forge/librealsense) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-librealsense2-green.svg)](https://anaconda.org/conda-forge/librealsense2) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/librealsense2.svg)](https://anaconda.org/conda-forge/librealsense2) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/librealsense2.svg)](https://anaconda.org/conda-forge/librealsense2) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/librealsense2.svg)](https://anaconda.org/conda-forge/librealsense2) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-pyrealsense2-green.svg)](https://anaconda.org/conda-forge/pyrealsense2) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/pyrealsense2.svg)](https://anaconda.org/conda-forge/pyrealsense2) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/pyrealsense2.svg)](https://anaconda.org/conda-forge/pyrealsense2) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/pyrealsense2.svg)](https://anaconda.org/conda-forge/pyrealsense2) |
 
 Installing librealsense
@@ -242,16 +241,16 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `librealsense, librealsense2, pyrealsense2` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `librealsense, pyrealsense2` can be installed with `conda`:
 
 ```
-conda install librealsense librealsense2 pyrealsense2
+conda install librealsense pyrealsense2
 ```
 
 or with `mamba`:
 
 ```
-mamba install librealsense librealsense2 pyrealsense2
+mamba install librealsense pyrealsense2
 ```
 
 It is possible to list all of the versions of `librealsense` available on your platform with `conda`:
