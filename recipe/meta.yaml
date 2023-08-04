@@ -62,8 +62,6 @@ outputs:
         - python
         - libudev  # [linux and cdt_name!='cos6']
         - libusb
-      # run:
-        # - {{ pin_subpackage('pyrealsense2', exact=True) }}
     test:
       commands:
         - test -f ${PREFIX}/include/librealsense2/rs.hpp  # [not win]
@@ -79,10 +77,6 @@ outputs:
     build:
       string: py{{ PY_VER_MAJOR }}{{ PY_VER_MINOR }}h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}_{{ build_ext }}
       run_exports:
-        # Should we even have this???
-        # don't pin the python version so hard.
-        # Actually, I have found pretty good compatibility in the python
-        # package
         - {{ pin_subpackage('pyrealsense2') }}
     requirements:
       # There is no build script, but I just want it to think
