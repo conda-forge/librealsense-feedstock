@@ -24,9 +24,6 @@ build:
   run_exports:
     # See https://github.com/IntelRealSense/librealsense/pull/3449
     - {{ pin_subpackage(name, max_pin='x.x') }}
-    # - {{ PYTHON }} ./wrappers/python/setup.py install
-  ignore_run_exports_from:
-    - python
 
 requirements:
   build:
@@ -46,7 +43,6 @@ requirements:
     - libudev  # [linux and cdt_name!='cos6']
     - libusb
   run:
-    - python
     - __cuda  # [cuda_compiler_version != "None"]
 
 
