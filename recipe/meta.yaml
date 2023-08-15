@@ -21,6 +21,8 @@ build:
   string: py{{ PY_VER_MAJOR }}{{ PY_VER_MINOR }}h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}_{{ build_ext }}
   skip: true  # [win or cuda_compiler_version == "10.2"]
   track_features: {{ "[librealsense-cuda]" if cuda_enabled else "" }}
+  ignore_run_exports_from:
+    - python
   run_exports:
     # See https://github.com/IntelRealSense/librealsense/pull/3449
     - {{ pin_subpackage(name, max_pin='x.x') }}
@@ -48,16 +50,6 @@ requirements:
 
 outputs:
   - name: librealsense
-    build:
-      string: py{{ PY_VER_MAJOR }}{{ PY_VER_MINOR }}h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}_{{ build_ext }}
-    requirements:
-      host:
-        # Explicitely add a python requirement so that the hash changes between
-        # pyrealsense for pypy36 and python3.6
-        # similarly for pypy37 and python3.7
-        - python
-        - libudev  # [linux and cdt_name!='cos6']
-        - libusb
     test:
       commands:
         - test -f ${PREFIX}/include/librealsense2/rs.hpp  # [not win]
