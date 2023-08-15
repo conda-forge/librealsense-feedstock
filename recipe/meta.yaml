@@ -72,8 +72,6 @@ outputs:
   - name: pyrealsense2
     build:
       string: py{{ PY_VER_MAJOR }}{{ PY_VER_MINOR }}h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}_{{ build_ext }}
-      run_exports:
-        - {{ pin_subpackage('pyrealsense2') }}
     requirements:
       # There is no build script, but I just want it to think
       # that it needs python and numpy at build time
