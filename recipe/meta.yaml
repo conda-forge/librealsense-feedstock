@@ -2,6 +2,8 @@
 {% set version = "2.54.1" %}
 {% set cuda_enabled = cuda_compiler_version != "None" %}
 {% set build_ext = "cuda" if cuda_enabled else "cpu" %}
+{% set PY_VER_MAJOR = PY_VER.split('.')[0] %}
+{% set PY_VER_MINOR = PY_VER.split('.')[1] %}
 
 package:
   name: {{ name }}
@@ -15,16 +17,20 @@ source:
       - fix_ppc64le.patch  # [ppc64le]
 
 build:
-  number: 1
-  string: h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}_{{ build_ext }}
+  number: 2
+  string: py{{ PY_VER_MAJOR }}{{ PY_VER_MINOR }}h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}_{{ build_ext }}
   skip: true  # [win or cuda_compiler_version == "10.2"]
   track_features: {{ "[librealsense-cuda]" if cuda_enabled else "" }}
+  ignore_run_exports_from:
+    - python
   run_exports:
     # See https://github.com/IntelRealSense/librealsense/pull/3449
     - {{ pin_subpackage(name, max_pin='x.x') }}
 
 requirements:
   build:
+    - python                                 # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - {{ compiler("cuda") }}  # [cuda_compiler_version != "None"]
@@ -35,21 +41,42 @@ requirements:
     # need a CDT for libudev for cos6, proper package available for cos7 (below)
     - {{ cdt('libudev-devel') }}  # [linux and cdt_name=='cos6']
   host:
+    - python
     - libudev  # [linux and cdt_name!='cos6']
     - libusb
   run:
     - __cuda  # [cuda_compiler_version != "None"]
 
-test:
-  commands:
-    - test -f ${PREFIX}/include/librealsense2/rs.hpp  # [not win]
-    - test -f ${PREFIX}/lib/librealsense2.so  # [linux]
-    - test -f ${PREFIX}/lib/librealsense2.dylib  # [osx]
-    - test -f ${PREFIX}/lib/cmake/realsense2/realsense2Config.cmake  # [not win]
-    - if exist %PREFIX%\\Library\\include\\librealsense2\\rs.hpp (exit 0) else (exit 1)  # [win]
-    - if exist $PREFIX$\\Library\\lib\\realsense2.lib (exit 0) else (exit 1)  # [win]
-    - if exist $PREFIX$\\Library\\bin\\realsense2.dll (exit 0) else (exit 1)  # [win]
-    - if exist %PREFIX%\\Library\\lib\cmake\\realsense2\\realsense2Config.cmake (exit 0) else (exit 1)  # [win]
+
+outputs:
+  - name: librealsense
+    test:
+      commands:
+        - test -f ${PREFIX}/include/librealsense2/rs.hpp  # [not win]
+        - test -f ${PREFIX}/lib/librealsense2.so  # [linux]
+        - test -f ${PREFIX}/lib/librealsense2.dylib  # [osx]
+        - test -f ${PREFIX}/lib/cmake/realsense2/realsense2Config.cmake  # [not win]
+        - if exist %PREFIX%\\Library\\include\\librealsense2\\rs.hpp (exit 0) else (exit 1)  # [win]
+        - if exist $PREFIX$\\Library\\lib\\realsense2.lib (exit 0) else (exit 1)  # [win]
+        - if exist $PREFIX$\\Library\\bin\\realsense2.dll (exit 0) else (exit 1)  # [win]
+        - if exist %PREFIX%\\Library\\lib\cmake\\realsense2\\realsense2Config.cmake (exit 0) else (exit 1)  # [win]
+
+  - name: pyrealsense2
+    build:
+      string: py{{ PY_VER_MAJOR }}{{ PY_VER_MINOR }}h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}_{{ build_ext }}
+    requirements:
+      # There is no build script, but I just want it to think
+      # that it needs python and numpy at build time
+      host:
+        - python
+        - numpy
+      run:
+        - python
+        - {{ pin_compatible('numpy') }}
+        - {{ pin_subpackage('librealsense', exact=True) }}
+    test:
+      imports:
+        - pyrealsense2
 
 about:
   home: https://github.com/IntelRealSense/librealsense
