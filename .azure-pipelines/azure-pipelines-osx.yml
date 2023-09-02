@@ -17,6 +17,9 @@ jobs:
       osx_64_python3.8.____cpython:
         CONFIG: osx_64_python3.8.____cpython
         UPLOAD_PACKAGES: 'True'
+      osx_64_python3.9.____73_pypy:
+        CONFIG: osx_64_python3.9.____73_pypy
+        UPLOAD_PACKAGES: 'True'
       osx_64_python3.9.____cpython:
         CONFIG: osx_64_python3.9.____cpython
         UPLOAD_PACKAGES: 'True'
@@ -32,6 +35,7 @@ jobs:
       osx_arm64_python3.9.____cpython:
         CONFIG: osx_arm64_python3.9.____cpython
         UPLOAD_PACKAGES: 'True'
+    maxParallel: 8
   timeoutInMinutes: 360
 
   steps:
