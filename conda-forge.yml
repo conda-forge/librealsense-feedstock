@@ -10,3 +10,6 @@ provider:
   linux_aarch64: azure
   linux_ppc64le: azure
 test: native_and_emulated
+azure:
+  settings_linux:
+    swapfile_size: 10GiB
