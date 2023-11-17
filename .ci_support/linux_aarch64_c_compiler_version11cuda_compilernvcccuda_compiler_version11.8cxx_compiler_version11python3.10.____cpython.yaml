@@ -41,4 +41,3 @@ zip_keys:
   - docker_image
 - - python
   - numpy
-  - channel_sources
