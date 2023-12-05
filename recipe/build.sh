@@ -8,22 +8,7 @@ if [[ "${target_platform}" == "osx-arm64" || "${target_platform}" == "linux-ppc6
 fi
 
 # Enable CUDA support
-if [[ ! -z "${cuda_compiler_version+x}" && "${cuda_compiler_version}" == "11.*" ]]
-then
-    if [[ -z "${CUDA_HOME+x}" ]]
-    then
-        echo "==> cuda_compiler_version=${cuda_compiler_version}, extract manually CUDA_HOME variable"
-        CUDA_GDB_EXECUTABLE=$(which cuda-gdb || exit 0)
-        if [[ -n "$CUDA_GDB_EXECUTABLE" ]]
-        then
-            CUDA_HOME=$(dirname $(dirname $CUDA_GDB_EXECUTABLE))
-        else
-            echo "Cannot determine CUDA_HOME: cuda-gdb not in PATH"
-            return 1
-        fi
-    fi
-    CMAKE_ARGS="${CMAKE_ARGS} -DBUILD_WITH_CUDA=ON -DCUDA_TOOLKIT_ROOT_DIR=${CUDA_HOME} -DCMAKE_LIBRARY_PATH=${CUDA_HOME}/lib64/stubs -DCMAKE_CUDA_ARCHITECTURES=all"
-elif [[ ! -z "${cuda_compiler_version+x}" && "${cuda_compiler_version}" != "None" ]]
+if [[ ! -z "${cuda_compiler_version+x}" && "${cuda_compiler_version}" != "None" ]]
 then
     echo "==> cuda_compiler_version=${cuda_compiler_version}, use CMake's CUDA support"
     CMAKE_ARGS="${CMAKE_ARGS} -DBUILD_WITH_CUDA=ON -DCMAKE_CUDA_ARCHITECTURES=all"
@@ -31,7 +16,6 @@ else
     echo "==> cuda_compiler_version=${cuda_compiler_version}, disable CUDA support"
     CMAKE_ARGS="${CMAKE_ARGS} -DBUILD_WITH_CUDA=OFF"
 fi
-
 
 
 cmake ${CMAKE_ARGS} -GNinja \
