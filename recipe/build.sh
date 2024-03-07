@@ -11,7 +11,24 @@ fi
 if [[ ! -z "${cuda_compiler_version+x}" && "${cuda_compiler_version}" != "None" ]]
 then
     echo "==> cuda_compiler_version=${cuda_compiler_version}, use CMake's CUDA support"
-    CMAKE_ARGS="${CMAKE_ARGS} -DBUILD_WITH_CUDA=ON -DCMAKE_CUDA_ARCHITECTURES=all"
+    # Point CMake to CUDA Toolkit. Use `targets` directories with CUDA 12+
+    if [[ "${cuda_compiler_version}" == 11* ]]
+    then
+        CUDA_TOOLKIT_ROOT_DIR="${CUDA_HOME}"
+    elif [[ "${target_platform}" == "linux-64" ]]
+    then
+        CUDA_TOOLKIT_ROOT_DIR="${PREFIX}/targets/x86_64-linux"
+    elif [[ "${target_platform}" == "linux-aarch64" ]]
+    then
+        CUDA_TOOLKIT_ROOT_DIR="${PREFIX}/targets/sbsa-linux"
+    elif [[ "${target_platform}" == "linux-ppc64le" ]]
+    then
+        CUDA_TOOLKIT_ROOT_DIR="${PREFIX}/targets/ppc64le-linux"
+    else
+        echo "Unknown CUDA version ${cuda_compiler_version} for target platform ${target_platform}"
+        exit 1
+    fi
+    CMAKE_ARGS="${CMAKE_ARGS} -DBUILD_WITH_CUDA=ON -DCMAKE_CUDA_ARCHITECTURES=all -DCUDA_TOOLKIT_ROOT_DIR=${CUDA_TOOLKIT_ROOT_DIR}"
 else
     echo "==> cuda_compiler_version=${cuda_compiler_version}, disable CUDA support"
     CMAKE_ARGS="${CMAKE_ARGS} -DBUILD_WITH_CUDA=OFF"
