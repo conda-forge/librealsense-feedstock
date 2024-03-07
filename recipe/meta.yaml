@@ -44,6 +44,7 @@ requirements:
     - python
     - libudev  # [linux and cdt_name!='cos6']
     - libusb
+    - cuda-version {{ cuda_compiler_version }}  # [(cuda_compiler_version or "None") != "None"]
   run:
     - __cuda  # [cuda_compiler_version != "None"]
 
