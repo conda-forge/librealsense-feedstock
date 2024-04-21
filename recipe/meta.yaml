@@ -1,5 +1,5 @@
 {% set name = "librealsense" %}
-{% set version = "2.54.2" %}
+{% set version = "2.55.1" %}
 {% set cuda_enabled = cuda_compiler_version != "None" %}
 {% set build_ext = "cuda" if cuda_enabled else "cpu" %}
 {% set PY_VER_MAJOR = PY_VER.split('.')[0] %}
@@ -11,13 +11,13 @@ package:
 
 source:
   - url: https://github.com/IntelRealSense/librealsense/archive/v{{ version }}.tar.gz
-    sha256: e3a767337ff40ae41000049a490ab84bd70b00cbfef65e8cdbadf17fd2e1e5a8
+    sha256: 54546d834ff5d8b35d9955319ad2e428f6d9ae4c61b932d1bd716ed81ad135f7
     patches:
       - fix_macos_arm64.patch
       - fix_ppc64le.patch  # [ppc64le]
 
 build:
-  number: 1
+  number: 0
   string: py{{ PY_VER_MAJOR }}{{ PY_VER_MINOR }}h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}_{{ build_ext }}
   skip: true  # [win or cuda_compiler_version == "10.2"]
   skip: true  # [ppc64le and cuda_compiler_version == "12.0"]
@@ -33,12 +33,12 @@ requirements:
     - python                                 # [build_platform != target_platform]
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
     - {{ compiler("cuda") }}  # [cuda_compiler_version != "None"]
     - cmake
     - ninja
     - libudev  # [linux]
-    - sysroot_linux-64 2.17  # [linux64 and cdt_name!='cos6']
     # need a CDT for libudev for cos6, proper package available for cos7 (below)
     - {{ cdt('libudev-devel') }}  # [linux and cdt_name=='cos6']
   host:
