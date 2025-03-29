@@ -19,8 +19,7 @@ source:
 build:
   number: 0
   string: py{{ PY_VER_MAJOR }}{{ PY_VER_MINOR }}h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}_{{ build_ext }}
-  skip: true  # [win or cuda_compiler_version == "10.2"]
-  skip: true  # [ppc64le and cuda_compiler_version == "12.0"]
+  skip: true  # [win]
   track_features: {{ "[librealsense-cuda]" if cuda_enabled else "" }}
   ignore_run_exports_from:
     - python
@@ -39,11 +38,9 @@ requirements:
     - cmake
     - ninja
     - libudev  # [linux]
-    # need a CDT for libudev for cos6, proper package available for cos7 (below)
-    - {{ cdt('libudev-devel') }}  # [linux and cdt_name=='cos6']
   host:
     - python
-    - libudev  # [linux and cdt_name!='cos6']
+    - libudev  # [linux]
     - libusb
     - cuda-version {{ cuda_compiler_version }}  # [(cuda_compiler_version or "None") != "None"]
   run:
