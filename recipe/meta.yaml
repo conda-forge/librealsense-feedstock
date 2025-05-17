@@ -45,6 +45,7 @@ requirements:
     - libudev  # [linux]
     - libusb
     - cuda-version {{ cuda_compiler_version }}  # [(cuda_compiler_version or "None") != "None"]
+    - cuda-cudart-dev  # [(cuda_compiler_version or "").startswith("12")]
   run:
     - __cuda  # [cuda_compiler_version != "None"]
 
