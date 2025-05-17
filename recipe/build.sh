@@ -52,6 +52,7 @@ cmake ${CMAKE_ARGS} -GNinja \
       -DBUILD_UNIT_TESTS=OFF \
       -DCHECK_FOR_UPDATES=OFF \
       -DCMAKE_VERBOSE_MAKEFILE=ON \
+      -DBUILD_LEGACY_PYBACKEND=ON \
       $SRC_DIR
 
 cmake --build . --config Release 
