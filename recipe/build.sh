@@ -47,6 +47,7 @@ cmake ${CMAKE_ARGS} -GNinja \
       -DBUILD_PYTHON_BINDINGS:bool=true \
       -DPYTHON_INSTALL_DIR="$SP_DIR" \
       -DPYTHON_EXECUTABLE="$PREFIX/bin/python" \
+      -DPython_EXECUTABLE="$PREFIX/bin/python" \
       -DBUILD_EXAMPLES=OFF \
       -DBUILD_UNIT_TESTS=OFF \
       -DCHECK_FOR_UPDATES=OFF \
