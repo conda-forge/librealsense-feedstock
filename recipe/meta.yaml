@@ -16,6 +16,7 @@ source:
       - fix_macos_arm64.patch
       - fix_ppc64le.patch  # [ppc64le]
       - do_not_run_ldconfig_on_install.patch
+      - 13079.patch
 
 build:
   number: 0
