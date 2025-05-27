@@ -17,6 +17,7 @@ source:
       - fix_ppc64le.patch  # [ppc64le]
       - do_not_run_ldconfig_on_install.patch
       - 13079.patch
+      - use_cxx17.patch
 
 build:
   number: 0
