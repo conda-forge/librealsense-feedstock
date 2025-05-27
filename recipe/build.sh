@@ -28,7 +28,8 @@ then
         echo "Unknown CUDA version ${cuda_compiler_version} for target platform ${target_platform}"
         exit 1
     fi
-    CMAKE_ARGS="${CMAKE_ARGS} -DBUILD_WITH_CUDA=ON -DCMAKE_CUDA_ARCHITECTURES=all -DCUDA_TOOLKIT_ROOT_DIR=${CUDA_TOOLKIT_ROOT_DIR}"
+    CMAKE_ARGS="${CMAKE_ARGS} -DBUILD_WITH_CUDA=ON -DCMAKE_CUDA_ARCHITECTURES=all -DCUDA_TOOLKIT_ROOT_DIR=${CUDA_TOOLKIT_ROOT_DIR} -DCUDAToolkit_ROOT=${CUDA_TOOLKIT_ROOT_DIR} -DCUDA_CUDART_LIBRARY=$PREFIX/lib/libcudart.so"
+    export CUDA_LIB_PATH="$PREFIX/lib"
 else
     echo "==> cuda_compiler_version=${cuda_compiler_version}, disable CUDA support"
     CMAKE_ARGS="${CMAKE_ARGS} -DBUILD_WITH_CUDA=OFF"
@@ -47,10 +48,12 @@ cmake ${CMAKE_ARGS} -GNinja \
       -DBUILD_PYTHON_BINDINGS:bool=true \
       -DPYTHON_INSTALL_DIR="$SP_DIR" \
       -DPYTHON_EXECUTABLE="$PREFIX/bin/python" \
+      -DPython_EXECUTABLE="$PREFIX/bin/python" \
       -DBUILD_EXAMPLES=OFF \
       -DBUILD_UNIT_TESTS=OFF \
       -DCHECK_FOR_UPDATES=OFF \
       -DCMAKE_VERBOSE_MAKEFILE=ON \
+      -DBUILD_LEGACY_PYBACKEND=OFF \
       $SRC_DIR
 
 cmake --build . --config Release 
