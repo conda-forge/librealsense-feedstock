@@ -1,0 +1,31 @@
+From aa3f24c8952bbab347f22fa838b90d8382d58837 Mon Sep 17 00:00:00 2001
+From: Silvio Traversaro <silvio@traversaro.it>
+Date: Tue, 27 May 2025 10:52:14 +0200
+Subject: [PATCH] Use C++17
+
+---
+ CMake/lrs_macros.cmake | 10 +---------
+ 1 file changed, 1 insertion(+), 9 deletions(-)
+
+diff --git a/CMake/lrs_macros.cmake b/CMake/lrs_macros.cmake
+index b19a729049..dd802a9724 100644
+--- a/CMake/lrs_macros.cmake
++++ b/CMake/lrs_macros.cmake
+@@ -8,16 +8,8 @@ endmacro()
+ 
+ macro(config_cxx_flags)
+     include(CheckCXXCompilerFlag)
+-    if(MSVC OR MSVC_IDE)
+-        check_cxx_compiler_flag(/std:c++14 SUPPORTS_CXX14)
+-    else()
+-        check_cxx_compiler_flag(-std=c++14 SUPPORTS_CXX14)
+-    endif()
+-    if( NOT SUPPORTS_CXX14 )
+-        message(FATAL_ERROR "Project '${PROJECT_NAME}' requires C++14 or higher")
+-    endif()
+     if( NOT CMAKE_CXX_STANDARD )
+-        set( CMAKE_CXX_STANDARD 14 )
++        set( CMAKE_CXX_STANDARD 17 )
+     endif()
+     # We require that the current project (e.g., librealsense) use C++14. However, projects using
+     # the library don't need to be C++14 -- they can use C++11. Hence this is PRIVATE and not PUBLIC:
