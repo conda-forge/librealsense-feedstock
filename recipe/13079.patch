@@ -1,0 +1,40 @@
+From cc3759b8b2d33892d0f118ba9dbff578cbb838cb Mon Sep 17 00:00:00 2001
+From: Eugene Frizza <eugenefrizza@gmail.com>
+Date: Tue, 25 Jun 2024 11:24:04 -0700
+Subject: [PATCH] Install pyrealsense2 .so and __init__.py
+
+---
+ wrappers/python/CMakeLists.txt | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+diff --git a/wrappers/python/CMakeLists.txt b/wrappers/python/CMakeLists.txt
+index d13525c02a..a14bf47545 100644
+--- a/wrappers/python/CMakeLists.txt
++++ b/wrappers/python/CMakeLists.txt
+@@ -168,6 +168,15 @@ install(TARGETS pybackend2 pyrealsense2
+ )
+ 
+ target_include_directories(pybackend2 PRIVATE ../../src)
++
++else() # not BUILD_LEGACY_PYBACKEND
++
++install(TARGETS pyrealsense2
++    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
++    LIBRARY DESTINATION ${PYTHON_INSTALL_DIR}
++    ARCHIVE DESTINATION ${PYTHON_INSTALL_DIR}
++)
++
+ endif()  # BUILD_LEGACY_PYBACKEND
+ 
+ write_basic_package_version_file("${CMAKE_CURRENT_BINARY_DIR}/pyrealsense2ConfigVersion.cmake"
+@@ -192,6 +201,10 @@ install(FILES "${CMAKE_BINARY_DIR}/wrappers/python/pyrealsense2ConfigVersion.cma
+     DESTINATION ${CMAKECONFIG_PY_INSTALL_DIR}
+ )
+ 
++install(FILES pyrealsense2/__init__.py
++    DESTINATION ${PYTHON_INSTALL_DIR}
++)
++
+ target_include_directories(pyrealsense2 PRIVATE ../../src)
+ 
+ if (BUILD_PYTHON_DOCS)
