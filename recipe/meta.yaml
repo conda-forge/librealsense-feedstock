@@ -17,6 +17,7 @@ source:
       - do_not_run_ldconfig_on_install.patch
       - 13079.patch
       - use_cxx17.patch
+      - devendor_pybind11.patch
 
 build:
   number: 1
@@ -46,6 +47,9 @@ requirements:
     - python
     - libudev  # [linux]
     - libusb
+    - pybind11
+    - pybind11-abi
+    - pybind11_json
     - cuda-version {{ cuda_compiler_version }}  # [(cuda_compiler_version or "None") != "None"]
     - cuda-cudart-dev  # [(cuda_compiler_version or "").startswith("12")]
   run:
