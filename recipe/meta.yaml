@@ -13,8 +13,7 @@ source:
   - url: https://github.com/IntelRealSense/librealsense/archive/v{{ version }}.tar.gz
     sha256: 54546d834ff5d8b35d9955319ad2e428f6d9ae4c61b932d1bd716ed81ad135f7
     patches:
-      - fix_macos_arm64.patch
-      - fix_ppc64le.patch  # [ppc64le]
+      - drop_additional_flags.patch
       - do_not_run_ldconfig_on_install.patch
       - 13079.patch
       - use_cxx17.patch
