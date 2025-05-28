@@ -20,7 +20,7 @@ source:
       - devendor_pybind11.patch
 
 build:
-  number: 1
+  number: 2
   string: py{{ PY_VER_MAJOR }}{{ PY_VER_MINOR }}h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}_{{ build_ext }}
   skip: true  # [win]
   skip: true  # [ppc64le and (cuda_compiler_version or "").startswith("12")]
@@ -80,7 +80,6 @@ outputs:
         - numpy
       run:
         - python
-        - {{ pin_compatible('numpy') }}
         - {{ pin_subpackage('librealsense', exact=True) }}
     test:
       imports:
