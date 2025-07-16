@@ -4,7 +4,7 @@
 {% set build_ext = "cuda" if cuda_enabled else "cpu" %}
 {% set PY_VER_MAJOR = PY_VER.split('.')[0] %}
 {% set PY_VER_MINOR = PY_VER.split('.')[1] %}
-{% set build = 2 %}
+{% set build = 3 %}
 
 # Order of priority:
 # CUDA 12
