@@ -46,7 +46,7 @@ cmake ${CMAKE_ARGS} -GNinja \
       -DBUILD_WITH_OPENMP=OFF \
       -DFORCE_RSUSB_BACKEND=ON \
       -DBUILD_PYTHON_BINDINGS:bool=true \
-      -DPYTHON_INSTALL_DIR="$SP_DIR" \
+      -DPYTHON_INSTALL_DIR="$SP_DIR/pyrealsense2" \
       -DPYTHON_EXECUTABLE="$PREFIX/bin/python" \
       -DPython_EXECUTABLE="$PREFIX/bin/python" \
       -DBUILD_EXAMPLES=OFF \
