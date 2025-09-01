@@ -1,0 +1,31 @@
+From 23e6f8973b5016eebd3010f009eba867fcdefb34 Mon Sep 17 00:00:00 2001
+From: Silvio Traversaro <silvio@traversaro.it>
+Date: Mon, 1 Sep 2025 17:25:39 +0200
+Subject: [PATCH] Fix .pyd installation on Windows
+
+---
+ wrappers/python/CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/wrappers/python/CMakeLists.txt b/wrappers/python/CMakeLists.txt
+index a14bf475455..e176f94b32e 100644
+--- a/wrappers/python/CMakeLists.txt
++++ b/wrappers/python/CMakeLists.txt
+@@ -162,7 +162,7 @@ endif()
+ 
+ install(TARGETS pybackend2 pyrealsense2
+     EXPORT pyrealsense2Targets
+-    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
++    RUNTIME DESTINATION ${PYTHON_INSTALL_DIR}
+     LIBRARY DESTINATION ${PYTHON_INSTALL_DIR}
+     ARCHIVE DESTINATION ${PYTHON_INSTALL_DIR}
+ )
+@@ -172,7 +172,7 @@ target_include_directories(pybackend2 PRIVATE ../../src)
+ else() # not BUILD_LEGACY_PYBACKEND
+ 
+ install(TARGETS pyrealsense2
+-    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
++    RUNTIME DESTINATION ${PYTHON_INSTALL_DIR}
+     LIBRARY DESTINATION ${PYTHON_INSTALL_DIR}
+     ARCHIVE DESTINATION ${PYTHON_INSTALL_DIR}
+ )
