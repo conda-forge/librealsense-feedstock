@@ -11,11 +11,7 @@ fi
 if [[ ! -z "${cuda_compiler_version+x}" && "${cuda_compiler_version}" != "None" ]]
 then
     echo "==> cuda_compiler_version=${cuda_compiler_version}, use CMake's CUDA support"
-    # Point CMake to CUDA Toolkit. Use `targets` directories with CUDA 12+
-    if [[ "${cuda_compiler_version}" == 11* ]]
-    then
-        CUDA_TOOLKIT_ROOT_DIR="${CUDA_HOME}"
-    elif [[ "${target_platform}" == "linux-64" ]]
+    if [[ "${target_platform}" == "linux-64" ]]
     then
         CUDA_TOOLKIT_ROOT_DIR="${PREFIX}/targets/x86_64-linux"
     elif [[ "${target_platform}" == "linux-aarch64" ]]
@@ -28,7 +24,13 @@ then
         echo "Unknown CUDA version ${cuda_compiler_version} for target platform ${target_platform}"
         exit 1
     fi
-    CMAKE_ARGS="${CMAKE_ARGS} -DBUILD_WITH_CUDA=ON -DCMAKE_CUDA_ARCHITECTURES=all -DCUDA_TOOLKIT_ROOT_DIR=${CUDA_TOOLKIT_ROOT_DIR} -DCUDAToolkit_ROOT=${CUDA_TOOLKIT_ROOT_DIR} -DCUDA_CUDART_LIBRARY=$PREFIX/lib/libcudart.so"
+    CMAKE_ARGS="${CMAKE_ARGS} -DBUILD_WITH_CUDA=ON -DCUDA_TOOLKIT_ROOT_DIR=${CUDA_TOOLKIT_ROOT_DIR} -DCUDAToolkit_ROOT=${CUDA_TOOLKIT_ROOT_DIR} -DCUDA_CUDART_LIBRARY=$PREFIX/lib/libcudart.so"
+    if [[ "${target_platform}" == "linux-aarch64" && "${arm_variant_type}" == "tegra" ]]
+    then
+        CMAKE_ARGS="${CMAKE_ARGS} -DCMAKE_CUDA_ARCHITECTURES=$CUDAARCHS"
+    else
+        CMAKE_ARGS="${CMAKE_ARGS} -DCMAKE_CUDA_ARCHITECTURES=all"
+    fi
     export CUDA_LIB_PATH="$PREFIX/lib"
 else
     echo "==> cuda_compiler_version=${cuda_compiler_version}, disable CUDA support"
