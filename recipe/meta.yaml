@@ -3,7 +3,7 @@
 {% set cuda_enabled = cuda_compiler_version != "None" %}
 {% set PY_VER_MAJOR = PY_VER.split('.')[0] %}
 {% set PY_VER_MINOR = PY_VER.split('.')[1] %}
-{% set build = 1 %}
+{% set build = 2 %}
 
 # Order of priority:
 # CUDA 12 (+200)
@@ -38,7 +38,7 @@ build:
   string: cpu_py{{ CONDA_PY }}_h{{ PKG_HASH }}_{{ build }}                                                 # [cuda_compiler_version == "None"]
   # We do not want to build both (cuda_compiler_version == "None" and arm_variant_type == "sbsa") and  (cuda_compiler_version == "None" and arm_variant_type == "tegra"),
   # as arm_variant_type is ignored for non-CUDA builds, we skip the (cuda_compiler_version == "None" and arm_variant_type == "tegra") case
-  skip: true  # [cuda_compiler_version == "None" and aarch64 and arm_variant_type == "tegra"]
+  skip: true  # [arm_variant_type == "tegra" and cuda_compiler_version != "12.9"]
   ignore_run_exports_from:
     - python
   run_exports:
