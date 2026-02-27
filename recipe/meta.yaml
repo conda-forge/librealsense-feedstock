@@ -1,9 +1,9 @@
 {% set name = "librealsense" %}
-{% set version = "2.56.5" %}
+{% set version = "2.57.6" %}
 {% set cuda_enabled = cuda_compiler_version != "None" %}
 {% set PY_VER_MAJOR = PY_VER.split('.')[0] %}
 {% set PY_VER_MINOR = PY_VER.split('.')[1] %}
-{% set build = 2 %}
+{% set build = 0 %}
 
 # Order of priority:
 # CUDA 12 (+200)
@@ -25,7 +25,7 @@ package:
 
 source:
   - url: https://github.com/IntelRealSense/librealsense/archive/v{{ version }}.tar.gz
-    sha256: 58b2029eb7179afc7ea893c25be38a65b42c5b6d27330c8c611bc0e0a4ac5a85
+    sha256: 4c5eeafe004422e564df4ba74cab0e89a4b32282d0e0d6c1e9b33382bb5ed767
     patches:
       - drop_additional_flags.patch
       - do_not_run_ldconfig_on_install.patch
@@ -35,7 +35,7 @@ source:
 build:
   number: {{ build }}
   string: cuda{{ cuda_compiler_version | replace('.', '') }}_py{{ CONDA_PY }}_h{{ PKG_HASH }}_{{ build }}  # [cuda_compiler_version != "None"]
-  string: cpu_py{{ CONDA_PY }}_h{{ PKG_HASH }}_{{ build }}                                                 # [cuda_compiler_version == "None"]
+  string: cpu_py{{ CONDA_PY }}_h{{ PKG_HASH }}_{{ build }}  # [cuda_compiler_version == "None"]
   # We do not want to build both (cuda_compiler_version == "None" and arm_variant_type == "sbsa") and  (cuda_compiler_version == "None" and arm_variant_type == "tegra"),
   # as arm_variant_type is ignored for non-CUDA builds, we skip the (cuda_compiler_version == "None" and arm_variant_type == "tegra") case
   skip: true  # [arm_variant_type == "tegra" and cuda_compiler_version != "12.9"]
@@ -86,7 +86,7 @@ outputs:
   - name: pyrealsense2
     build:
       string: cuda{{ cuda_compiler_version | replace('.', '') }}_py{{ CONDA_PY }}_h{{ PKG_HASH }}_{{ build }}  # [cuda_compiler_version != "None"]
-      string: cpu_py{{ CONDA_PY }}_h{{ PKG_HASH }}_{{ build }}                                                 # [cuda_compiler_version == "None"]
+      string: cpu_py{{ CONDA_PY }}_h{{ PKG_HASH }}_{{ build }}  # [cuda_compiler_version == "None"]
     requirements:
       # There is no build script, but I just want it to think
       # that it needs python and numpy at build time
