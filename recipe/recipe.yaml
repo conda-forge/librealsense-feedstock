@@ -8,7 +8,7 @@ context:
   # CUDA with arm-variant=tegra (+150)
   # CPU (+0)
   # See https://github.com/conda-forge/librealsense-feedstock/issues/41
-  build_number: ${{ 150 if cuda_compiler_version != "None" and target_platform == "linux-aarch64" and arm_variant_type == "tegra" else 200 if cuda_compiler_version != "None" else 0 }}
+  build_number: 1
   build_prefix: ${{ "cuda" ~ (cuda_compiler_version | version_to_buildstring) if cuda_compiler_version != "None" else "cpu" }}
 
 recipe:
@@ -53,9 +53,10 @@ outputs:
         - ${{ stdlib("c") }}
         - ${{ compiler("cxx") }}
         - if: cuda_compiler_version != "None"
-          then: ${{ compiler("cuda") }}
-        - if: cuda_compiler_version != "None" and target_platform == "linux-aarch64"
-          then: arm-variant * ${{ arm_variant_type }}
+          then:
+            - ${{ compiler("cuda") }}
+            - if: target_platform == "linux-aarch64"
+              then: arm-variant * ${{ arm_variant_type }}
         - cmake <4
         - ninja
         - if: linux
