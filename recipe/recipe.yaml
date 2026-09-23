@@ -2,13 +2,13 @@ schema_version: 1
 
 context:
   name: librealsense
-  version: "2.58.3"
+  version: "2.58.4"
   # Order of priority:
   # CUDA (+200)
   # CUDA with arm-variant=tegra (+150)
   # CPU (+0)
   # See https://github.com/conda-forge/librealsense-feedstock/issues/41
-  build_number: 1
+  build_number: 0
   build_prefix: ${{ "cuda" ~ (cuda_compiler_version | version_to_buildstring) if cuda_compiler_version != "None" else "cpu" }}
 
 recipe:
@@ -17,7 +17,7 @@ recipe:
 
 source:
   url: https://github.com/IntelRealSense/librealsense/archive/v${{ version }}.tar.gz
-  sha256: 6a4c59180950bd9ced58a3dfc4ded586ed22dfc9c418684e7fc8c241b9aaac98
+  sha256: 3d07cafd0fc5c1b1803e1f6418cf7375a387593e873d3897015b8ec94be20e74
   patches:
     - drop_additional_flags.patch
     - do_not_run_ldconfig_on_install.patch
