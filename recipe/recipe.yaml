@@ -8,7 +8,7 @@ context:
   # CUDA with arm-variant=tegra (+150)
   # CPU (+0)
   # See https://github.com/conda-forge/librealsense-feedstock/issues/41
-  build_number: 1
+  build_number: 2
   build_prefix: ${{ "cuda" ~ (cuda_compiler_version | version_to_buildstring) if cuda_compiler_version != "None" else "cpu" }}
 
 recipe:

@@ -22,7 +22,7 @@ jobs:
       max-parallel: 50
       matrix:
         include:
-          - CONFIG: linux_64_channel_sourcesconda-forgeconda-forgelabelpython_rccuda_compiler_version12.9python3.15.____cp315
+          - CONFIG: linux_64_cuda_compiler_version12.9python3.11.____cpython
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
@@ -34,7 +34,7 @@ jobs:
             resize_partitions: False
             runs_on: ['ubuntu-latest']
             tools_install_dir: ~/miniforge3
-          - CONFIG: linux_64_channel_sourcesconda-forgeconda-forgelabelpython_rccuda_compiler_version13.4python3.15.____cp315
+          - CONFIG: linux_64_cuda_compiler_version12.9python3.12.____cpython
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
@@ -46,7 +46,7 @@ jobs:
             resize_partitions: False
             runs_on: ['ubuntu-latest']
             tools_install_dir: ~/miniforge3
-          - CONFIG: linux_64_channel_sourcesconda-forgeconda-forgelabelpython_rccuda_compiler_versionNonepython3.15.____cp315
+          - CONFIG: linux_64_cuda_compiler_version12.9python3.13.____cp313
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
@@ -58,7 +58,7 @@ jobs:
             resize_partitions: False
             runs_on: ['ubuntu-latest']
             tools_install_dir: ~/miniforge3
-          - CONFIG: linux_64_channel_sourcesconda-forgecuda_compiler_version12.9python3.11.____cpython
+          - CONFIG: linux_64_cuda_compiler_version12.9python3.14.____cp314
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
@@ -70,7 +70,7 @@ jobs:
             resize_partitions: False
             runs_on: ['ubuntu-latest']
             tools_install_dir: ~/miniforge3
-          - CONFIG: linux_64_channel_sourcesconda-forgecuda_compiler_version12.9python3.12.____cpython
+          - CONFIG: linux_64_cuda_compiler_version12.9python3.15.____cp315
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
@@ -82,7 +82,7 @@ jobs:
             resize_partitions: False
             runs_on: ['ubuntu-latest']
             tools_install_dir: ~/miniforge3
-          - CONFIG: linux_64_channel_sourcesconda-forgecuda_compiler_version12.9python3.13.____cp313
+          - CONFIG: linux_64_cuda_compiler_version13.4python3.11.____cpython
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
@@ -94,7 +94,7 @@ jobs:
             resize_partitions: False
             runs_on: ['ubuntu-latest']
             tools_install_dir: ~/miniforge3
-          - CONFIG: linux_64_channel_sourcesconda-forgecuda_compiler_version12.9python3.14.____cp314
+          - CONFIG: linux_64_cuda_compiler_version13.4python3.12.____cpython
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
@@ -106,7 +106,7 @@ jobs:
             resize_partitions: False
             runs_on: ['ubuntu-latest']
             tools_install_dir: ~/miniforge3
-          - CONFIG: linux_64_channel_sourcesconda-forgecuda_compiler_version13.4python3.11.____cpython
+          - CONFIG: linux_64_cuda_compiler_version13.4python3.13.____cp313
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
@@ -118,7 +118,7 @@ jobs:
             resize_partitions: False
             runs_on: ['ubuntu-latest']
             tools_install_dir: ~/miniforge3
-          - CONFIG: linux_64_channel_sourcesconda-forgecuda_compiler_version13.4python3.12.____cpython
+          - CONFIG: linux_64_cuda_compiler_version13.4python3.14.____cp314
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
@@ -130,7 +130,7 @@ jobs:
             resize_partitions: False
             runs_on: ['ubuntu-latest']
             tools_install_dir: ~/miniforge3
-          - CONFIG: linux_64_channel_sourcesconda-forgecuda_compiler_version13.4python3.13.____cp313
+          - CONFIG: linux_64_cuda_compiler_version13.4python3.15.____cp315
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
@@ -142,7 +142,7 @@ jobs:
             resize_partitions: False
             runs_on: ['ubuntu-latest']
             tools_install_dir: ~/miniforge3
-          - CONFIG: linux_64_channel_sourcesconda-forgecuda_compiler_version13.4python3.14.____cp314
+          - CONFIG: linux_64_cuda_compiler_versionNonepython3.11.____cpython
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
@@ -154,7 +154,7 @@ jobs:
             resize_partitions: False
             runs_on: ['ubuntu-latest']
             tools_install_dir: ~/miniforge3
-          - CONFIG: linux_64_channel_sourcesconda-forgecuda_compiler_versionNonepython3.11.____cpython
+          - CONFIG: linux_64_cuda_compiler_versionNonepython3.12.____cpython
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
@@ -166,7 +166,7 @@ jobs:
             resize_partitions: False
             runs_on: ['ubuntu-latest']
             tools_install_dir: ~/miniforge3
-          - CONFIG: linux_64_channel_sourcesconda-forgecuda_compiler_versionNonepython3.12.____cpython
+          - CONFIG: linux_64_cuda_compiler_versionNonepython3.13.____cp313
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
@@ -178,7 +178,7 @@ jobs:
             resize_partitions: False
             runs_on: ['ubuntu-latest']
             tools_install_dir: ~/miniforge3
-          - CONFIG: linux_64_channel_sourcesconda-forgecuda_compiler_versionNonepython3.13.____cp313
+          - CONFIG: linux_64_cuda_compiler_versionNonepython3.14.____cp314
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
@@ -190,7 +190,7 @@ jobs:
             resize_partitions: False
             runs_on: ['ubuntu-latest']
             tools_install_dir: ~/miniforge3
-          - CONFIG: linux_64_channel_sourcesconda-forgecuda_compiler_versionNonepython3.14.____cp314
+          - CONFIG: linux_64_cuda_compiler_versionNonepython3.15.____cp315
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
@@ -202,7 +202,7 @@ jobs:
             resize_partitions: False
             runs_on: ['ubuntu-latest']
             tools_install_dir: ~/miniforge3
-          - CONFIG: linux_aarch64_arm_variant_typesbsachannel_sourcesconda-forgeconda-forgelabelpython_rccuda_compiler_version12.9python3.15.____cp315
+          - CONFIG: linux_aarch64_arm_variant_typesbsacuda_compiler_version12.9python3.11.____cpython
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-aarch64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
@@ -214,7 +214,7 @@ jobs:
             resize_partitions: False
             runs_on: ['ubuntu-24.04-arm']
             tools_install_dir: ~/miniforge3
-          - CONFIG: linux_aarch64_arm_variant_typesbsachannel_sourcesconda-forgeconda-forgelabelpython_rccuda_compiler_version13.4python3.15.____cp315
+          - CONFIG: linux_aarch64_arm_variant_typesbsacuda_compiler_version12.9python3.12.____cpython
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-aarch64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
@@ -226,7 +226,7 @@ jobs:
             resize_partitions: False
             runs_on: ['ubuntu-24.04-arm']
             tools_install_dir: ~/miniforge3
-          - CONFIG: linux_aarch64_arm_variant_typesbsachannel_sourcesconda-forgeconda-forgelabelpython_rccuda_compiler_versionNonepython3.15.____cp315
+          - CONFIG: linux_aarch64_arm_variant_typesbsacuda_compiler_version12.9python3.13.____cp313
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-aarch64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
@@ -238,7 +238,7 @@ jobs:
             resize_partitions: False
             runs_on: ['ubuntu-24.04-arm']
             tools_install_dir: ~/miniforge3
-          - CONFIG: linux_aarch64_arm_variant_typesbsachannel_sourcesconda-forgecuda_compiler_version12.9python3.11.____cpython
+          - CONFIG: linux_aarch64_arm_variant_typesbsacuda_compiler_version12.9python3.14.____cp314
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-aarch64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
@@ -250,7 +250,7 @@ jobs:
             resize_partitions: False
             runs_on: ['ubuntu-24.04-arm']
             tools_install_dir: ~/miniforge3
-          - CONFIG: linux_aarch64_arm_variant_typesbsachannel_sourcesconda-forgecuda_compiler_version12.9python3.12.____cpython
+          - CONFIG: linux_aarch64_arm_variant_typesbsacuda_compiler_version12.9python3.15.____cp315
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-aarch64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
@@ -262,7 +262,7 @@ jobs:
             resize_partitions: False
             runs_on: ['ubuntu-24.04-arm']
             tools_install_dir: ~/miniforge3
-          - CONFIG: linux_aarch64_arm_variant_typesbsachannel_sourcesconda-forgecuda_compiler_version12.9python3.13.____cp313
+          - CONFIG: linux_aarch64_arm_variant_typesbsacuda_compiler_version13.4python3.11.____cpython
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-aarch64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
@@ -274,7 +274,7 @@ jobs:
             resize_partitions: False
             runs_on: ['ubuntu-24.04-arm']
             tools_install_dir: ~/miniforge3
-          - CONFIG: linux_aarch64_arm_variant_typesbsachannel_sourcesconda-forgecuda_compiler_version12.9python3.14.____cp314
+          - CONFIG: linux_aarch64_arm_variant_typesbsacuda_compiler_version13.4python3.12.____cpython
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-aarch64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
@@ -286,7 +286,7 @@ jobs:
             resize_partitions: False
             runs_on: ['ubuntu-24.04-arm']
             tools_install_dir: ~/miniforge3
-          - CONFIG: linux_aarch64_arm_variant_typesbsachannel_sourcesconda-forgecuda_compiler_version13.4python3.11.____cpython
+          - CONFIG: linux_aarch64_arm_variant_typesbsacuda_compiler_version13.4python3.13.____cp313
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-aarch64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
@@ -298,7 +298,7 @@ jobs:
             resize_partitions: False
             runs_on: ['ubuntu-24.04-arm']
             tools_install_dir: ~/miniforge3
-          - CONFIG: linux_aarch64_arm_variant_typesbsachannel_sourcesconda-forgecuda_compiler_version13.4python3.12.____cpython
+          - CONFIG: linux_aarch64_arm_variant_typesbsacuda_compiler_version13.4python3.14.____cp314
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-aarch64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
@@ -310,7 +310,7 @@ jobs:
             resize_partitions: False
             runs_on: ['ubuntu-24.04-arm']
             tools_install_dir: ~/miniforge3
-          - CONFIG: linux_aarch64_arm_variant_typesbsachannel_sourcesconda-forgecuda_compiler_version13.4python3.13.____cp313
+          - CONFIG: linux_aarch64_arm_variant_typesbsacuda_compiler_version13.4python3.15.____cp315
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-aarch64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
@@ -322,7 +322,7 @@ jobs:
             resize_partitions: False
             runs_on: ['ubuntu-24.04-arm']
             tools_install_dir: ~/miniforge3
-          - CONFIG: linux_aarch64_arm_variant_typesbsachannel_sourcesconda-forgecuda_compiler_version13.4python3.14.____cp314
+          - CONFIG: linux_aarch64_arm_variant_typesbsacuda_compiler_versionNonepython3.11.____cpython
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-aarch64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
@@ -334,7 +334,7 @@ jobs:
             resize_partitions: False
             runs_on: ['ubuntu-24.04-arm']
             tools_install_dir: ~/miniforge3
-          - CONFIG: linux_aarch64_arm_variant_typesbsachannel_sourcesconda-forgecuda_compiler_versionNonepython3.11.____cpython
+          - CONFIG: linux_aarch64_arm_variant_typesbsacuda_compiler_versionNonepython3.12.____cpython
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-aarch64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
@@ -346,7 +346,7 @@ jobs:
             resize_partitions: False
             runs_on: ['ubuntu-24.04-arm']
             tools_install_dir: ~/miniforge3
-          - CONFIG: linux_aarch64_arm_variant_typesbsachannel_sourcesconda-forgecuda_compiler_versionNonepython3.12.____cpython
+          - CONFIG: linux_aarch64_arm_variant_typesbsacuda_compiler_versionNonepython3.13.____cp313
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-aarch64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
@@ -358,7 +358,7 @@ jobs:
             resize_partitions: False
             runs_on: ['ubuntu-24.04-arm']
             tools_install_dir: ~/miniforge3
-          - CONFIG: linux_aarch64_arm_variant_typesbsachannel_sourcesconda-forgecuda_compiler_versionNonepython3.13.____cp313
+          - CONFIG: linux_aarch64_arm_variant_typesbsacuda_compiler_versionNonepython3.14.____cp314
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-aarch64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
@@ -370,7 +370,7 @@ jobs:
             resize_partitions: False
             runs_on: ['ubuntu-24.04-arm']
             tools_install_dir: ~/miniforge3
-          - CONFIG: linux_aarch64_arm_variant_typesbsachannel_sourcesconda-forgecuda_compiler_versionNonepython3.14.____cp314
+          - CONFIG: linux_aarch64_arm_variant_typesbsacuda_compiler_versionNonepython3.15.____cp315
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-aarch64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
@@ -382,7 +382,7 @@ jobs:
             resize_partitions: False
             runs_on: ['ubuntu-24.04-arm']
             tools_install_dir: ~/miniforge3
-          - CONFIG: linux_aarch64_arm_variant_typetegrachannel_sourcesconda-forgeconda-forgelabelpython_rccuda_compiler_version12.9python3.15.____cp315
+          - CONFIG: linux_aarch64_arm_variant_typetegracuda_compiler_version12.9python3.11.____cpython
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-aarch64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
@@ -394,7 +394,7 @@ jobs:
             resize_partitions: False
             runs_on: ['ubuntu-24.04-arm']
             tools_install_dir: ~/miniforge3
-          - CONFIG: linux_aarch64_arm_variant_typetegrachannel_sourcesconda-forgecuda_compiler_version12.9python3.11.____cpython
+          - CONFIG: linux_aarch64_arm_variant_typetegracuda_compiler_version12.9python3.12.____cpython
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-aarch64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
@@ -406,7 +406,7 @@ jobs:
             resize_partitions: False
             runs_on: ['ubuntu-24.04-arm']
             tools_install_dir: ~/miniforge3
-          - CONFIG: linux_aarch64_arm_variant_typetegrachannel_sourcesconda-forgecuda_compiler_version12.9python3.12.____cpython
+          - CONFIG: linux_aarch64_arm_variant_typetegracuda_compiler_version12.9python3.13.____cp313
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-aarch64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
@@ -418,7 +418,7 @@ jobs:
             resize_partitions: False
             runs_on: ['ubuntu-24.04-arm']
             tools_install_dir: ~/miniforge3
-          - CONFIG: linux_aarch64_arm_variant_typetegrachannel_sourcesconda-forgecuda_compiler_version12.9python3.13.____cp313
+          - CONFIG: linux_aarch64_arm_variant_typetegracuda_compiler_version12.9python3.14.____cp314
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-aarch64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
@@ -430,7 +430,7 @@ jobs:
             resize_partitions: False
             runs_on: ['ubuntu-24.04-arm']
             tools_install_dir: ~/miniforge3
-          - CONFIG: linux_aarch64_arm_variant_typetegrachannel_sourcesconda-forgecuda_compiler_version12.9python3.14.____cp314
+          - CONFIG: linux_aarch64_arm_variant_typetegracuda_compiler_version12.9python3.15.____cp315
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-aarch64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
@@ -442,7 +442,7 @@ jobs:
             resize_partitions: False
             runs_on: ['ubuntu-24.04-arm']
             tools_install_dir: ~/miniforge3
-          - CONFIG: linux_ppc64le_channel_sourcesconda-forgeconda-forgelabelpython_rcpython3.15.____cp315
+          - CONFIG: linux_ppc64le_python3.11.____cpython
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
@@ -454,7 +454,7 @@ jobs:
             resize_partitions: False
             runs_on: ['ubuntu-latest']
             tools_install_dir: ~/miniforge3
-          - CONFIG: linux_ppc64le_channel_sourcesconda-forgepython3.11.____cpython
+          - CONFIG: linux_ppc64le_python3.12.____cpython
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
@@ -466,7 +466,7 @@ jobs:
             resize_partitions: False
             runs_on: ['ubuntu-latest']
             tools_install_dir: ~/miniforge3
-          - CONFIG: linux_ppc64le_channel_sourcesconda-forgepython3.12.____cpython
+          - CONFIG: linux_ppc64le_python3.13.____cp313
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
@@ -478,7 +478,7 @@ jobs:
             resize_partitions: False
             runs_on: ['ubuntu-latest']
             tools_install_dir: ~/miniforge3
-          - CONFIG: linux_ppc64le_channel_sourcesconda-forgepython3.13.____cp313
+          - CONFIG: linux_ppc64le_python3.14.____cp314
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
@@ -490,7 +490,7 @@ jobs:
             resize_partitions: False
             runs_on: ['ubuntu-latest']
             tools_install_dir: ~/miniforge3
-          - CONFIG: linux_ppc64le_channel_sourcesconda-forgepython3.14.____cp314
+          - CONFIG: linux_ppc64le_python3.15.____cp315
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
@@ -502,7 +502,7 @@ jobs:
             resize_partitions: False
             runs_on: ['ubuntu-latest']
             tools_install_dir: ~/miniforge3
-          - CONFIG: win_64_channel_sourcesconda-forgeconda-forgelabelpython_rccuda_compiler_version12.9python3.15.____cp315
+          - CONFIG: win_64_cuda_compiler_version12.9python3.11.____cpython
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
             build_platform: win-64
@@ -514,7 +514,7 @@ jobs:
             resize_partitions: False
             runs_on: ['windows-2022']
             tools_install_dir: D:\Miniforge
-          - CONFIG: win_64_channel_sourcesconda-forgeconda-forgelabelpython_rccuda_compiler_version13.4python3.15.____cp315
+          - CONFIG: win_64_cuda_compiler_version12.9python3.12.____cpython
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
             build_platform: win-64
@@ -526,7 +526,7 @@ jobs:
             resize_partitions: False
             runs_on: ['windows-2022']
             tools_install_dir: D:\Miniforge
-          - CONFIG: win_64_channel_sourcesconda-forgeconda-forgelabelpython_rccuda_compiler_versionNonepython3.15.____cp315
+          - CONFIG: win_64_cuda_compiler_version12.9python3.13.____cp313
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
             build_platform: win-64
@@ -538,7 +538,7 @@ jobs:
             resize_partitions: False
             runs_on: ['windows-2022']
             tools_install_dir: D:\Miniforge
-          - CONFIG: win_64_channel_sourcesconda-forgecuda_compiler_version12.9python3.11.____cpython
+          - CONFIG: win_64_cuda_compiler_version12.9python3.14.____cp314
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
             build_platform: win-64
@@ -550,7 +550,7 @@ jobs:
             resize_partitions: False
             runs_on: ['windows-2022']
             tools_install_dir: D:\Miniforge
-          - CONFIG: win_64_channel_sourcesconda-forgecuda_compiler_version12.9python3.12.____cpython
+          - CONFIG: win_64_cuda_compiler_version12.9python3.15.____cp315
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
             build_platform: win-64
@@ -562,7 +562,7 @@ jobs:
             resize_partitions: False
             runs_on: ['windows-2022']
             tools_install_dir: D:\Miniforge
-          - CONFIG: win_64_channel_sourcesconda-forgecuda_compiler_version12.9python3.13.____cp313
+          - CONFIG: win_64_cuda_compiler_version13.4python3.11.____cpython
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
             build_platform: win-64
@@ -574,7 +574,7 @@ jobs:
             resize_partitions: False
             runs_on: ['windows-2022']
             tools_install_dir: D:\Miniforge
-          - CONFIG: win_64_channel_sourcesconda-forgecuda_compiler_version12.9python3.14.____cp314
+          - CONFIG: win_64_cuda_compiler_version13.4python3.12.____cpython
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
             build_platform: win-64
@@ -586,7 +586,7 @@ jobs:
             resize_partitions: False
             runs_on: ['windows-2022']
             tools_install_dir: D:\Miniforge
-          - CONFIG: win_64_channel_sourcesconda-forgecuda_compiler_version13.4python3.11.____cpython
+          - CONFIG: win_64_cuda_compiler_version13.4python3.13.____cp313
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
             build_platform: win-64
@@ -598,7 +598,7 @@ jobs:
             resize_partitions: False
             runs_on: ['windows-2022']
             tools_install_dir: D:\Miniforge
-          - CONFIG: win_64_channel_sourcesconda-forgecuda_compiler_version13.4python3.12.____cpython
+          - CONFIG: win_64_cuda_compiler_version13.4python3.14.____cp314
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
             build_platform: win-64
@@ -610,7 +610,7 @@ jobs:
             resize_partitions: False
             runs_on: ['windows-2022']
             tools_install_dir: D:\Miniforge
-          - CONFIG: win_64_channel_sourcesconda-forgecuda_compiler_version13.4python3.13.____cp313
+          - CONFIG: win_64_cuda_compiler_version13.4python3.15.____cp315
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
             build_platform: win-64
@@ -622,7 +622,7 @@ jobs:
             resize_partitions: False
             runs_on: ['windows-2022']
             tools_install_dir: D:\Miniforge
-          - CONFIG: win_64_channel_sourcesconda-forgecuda_compiler_version13.4python3.14.____cp314
+          - CONFIG: win_64_cuda_compiler_versionNonepython3.11.____cpython
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
             build_platform: win-64
@@ -634,7 +634,7 @@ jobs:
             resize_partitions: False
             runs_on: ['windows-2022']
             tools_install_dir: D:\Miniforge
-          - CONFIG: win_64_channel_sourcesconda-forgecuda_compiler_versionNonepython3.11.____cpython
+          - CONFIG: win_64_cuda_compiler_versionNonepython3.12.____cpython
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
             build_platform: win-64
@@ -646,7 +646,7 @@ jobs:
             resize_partitions: False
             runs_on: ['windows-2022']
             tools_install_dir: D:\Miniforge
-          - CONFIG: win_64_channel_sourcesconda-forgecuda_compiler_versionNonepython3.12.____cpython
+          - CONFIG: win_64_cuda_compiler_versionNonepython3.13.____cp313
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
             build_platform: win-64
@@ -658,7 +658,7 @@ jobs:
             resize_partitions: False
             runs_on: ['windows-2022']
             tools_install_dir: D:\Miniforge
-          - CONFIG: win_64_channel_sourcesconda-forgecuda_compiler_versionNonepython3.13.____cp313
+          - CONFIG: win_64_cuda_compiler_versionNonepython3.14.____cp314
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
             build_platform: win-64
@@ -670,7 +670,7 @@ jobs:
             resize_partitions: False
             runs_on: ['windows-2022']
             tools_install_dir: D:\Miniforge
-          - CONFIG: win_64_channel_sourcesconda-forgecuda_compiler_versionNonepython3.14.____cp314
+          - CONFIG: win_64_cuda_compiler_versionNonepython3.15.____cp315
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
             build_platform: win-64
@@ -709,6 +709,8 @@ jobs:
       run: |
         if [[ "$(uname -m)" == "x86_64" ]]; then
           docker run --rm --privileged multiarch/qemu-user-static:register --reset --credential yes
+        elif [[ "$(uname -m)" == "aarch64" ]]; then
+          docker run --rm --privileged --entrypoint /opt/docker/bin/register-binfmt ${{ matrix.DOCKER_IMAGE }} aarch64
         fi
 
     - name: Build on Linux
