@@ -22,9 +22,15 @@ source:
     - drop_additional_flags.patch
     - do_not_run_ldconfig_on_install.patch
     - devendor_pybind11.patch
-    - devendor_nlohmann_json.patch
-    - fix_pybind11_keepalive.patch
     - fix_pyd_windows_install.patch
+    # https://github.com/conda-forge/librealsense-feedstock/issues/94
+    - build_glsl_extensions_without_examples.patch
+    # https://github.com/conda-forge/librealsense-feedstock/issues/66
+    - use_cuda_toolkit.patch
+    # clang 21: rs2_option(RS2_OPTION_COUNT + 10) is not a constant expression, as the value is out of range
+    - fix_rs2_option_enum_range.patch
+    # realsense-viewer without the examples, https://github.com/conda-forge/librealsense-feedstock/issues/49
+    - build_graphical_tools_without_examples.patch
 
 build:
   number: ${{ build_number }}
@@ -70,6 +76,14 @@ outputs:
         - pybind11-abi
         - nlohmann_json
         - pybind11_json
+        # realsense2-gl (BUILD_GLSL_EXTENSIONS)
+        - glfw
+        - if: linux
+          then:
+            - libgl-devel
+            - libopengl-devel
+            # GL/glu.h for realsense-viewer
+            - libglu
         - if: cuda_compiler_version != "None"
           then:
             - cuda-version ==${{ cuda_compiler_version }}
@@ -83,6 +97,12 @@ outputs:
     inherit: librealsense-build
     build:
       string: ${{ build_prefix }}_py${{ python | version_to_buildstring }}_h${{ hash }}_${{ build_number }}
+      files:
+        exclude:
+          # graphical tools, in realsense-viewer
+          - "*bin/realsense-viewer*"
+          - "*bin/rs-depth-quality*"
+          - "*bin/rs-rosbag-inspector*"
     requirements:
       run:
         - if: cuda_compiler_version != "None"
@@ -96,16 +116,47 @@ outputs:
             then:
               - test -f ${PREFIX}/include/librealsense2/rs.hpp
               - test -f ${PREFIX}/lib/cmake/realsense2/realsense2Config.cmake
+              - test -f ${PREFIX}/include/librealsense2-gl/rs_processing_gl.hpp
+              - test -f ${PREFIX}/lib/cmake/realsense2-gl/realsense2-glConfig.cmake
           - if: linux
-            then: test -f ${PREFIX}/lib/librealsense2.so
+            then:
+              - test -f ${PREFIX}/lib/librealsense2.so
+              - test -f ${PREFIX}/lib/librealsense2-gl.so
           - if: osx
-            then: test -f ${PREFIX}/lib/librealsense2.dylib
+            then:
+              - test -f ${PREFIX}/lib/librealsense2.dylib
+              - test -f ${PREFIX}/lib/librealsense2-gl.dylib
           - if: win
             then:
               - if not exist %PREFIX%\Library\include\librealsense2\rs.hpp exit 1
               - if not exist %PREFIX%\Library\lib\realsense2.lib exit 1
               - if not exist %PREFIX%\Library\bin\realsense2.dll exit 1
+              - if not exist %PREFIX%\Library\bin\realsense2-gl.dll exit 1
+              - if not exist %PREFIX%\Library\lib\cmake\realsense2-gl\realsense2-glConfig.cmake exit 1
               - if not exist %PREFIX%\Library\lib\cmake\realsense2\realsense2Config.cmake exit 1
+
+  - package:
+      name: realsense-viewer
+    inherit: librealsense-build
+    build:
+      string: ${{ build_prefix }}_py${{ python | version_to_buildstring }}_h${{ hash }}_${{ build_number }}
+      files:
+        include:
+          - "*bin/realsense-viewer*"
+          - "*bin/rs-depth-quality*"
+          - "*bin/rs-rosbag-inspector*"
+    requirements:
+      run:
+        - ${{ pin_subpackage("librealsense", exact=True) }}
+    tests:
+      - script:
+          - if: unix
+            then:
+              - test -f ${PREFIX}/bin/realsense-viewer
+              - test -f ${PREFIX}/bin/rs-depth-quality
+            else:
+              - if not exist %PREFIX%\Library\bin\realsense-viewer.exe exit 1
+              - if not exist %PREFIX%\Library\bin\rs-depth-quality.exe exit 1
 
   # Compatibility metapackage: the bindings are installed into librealsense,
   # as they were in the v0 recipe. Host numpy contributes its run export.

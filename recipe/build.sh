@@ -2,9 +2,10 @@
 
 mkdir build && cd build
 
-# Workaround for https://github.com/IntelRealSense/librealsense/issues/8250#issuecomment-768309524
-if [[ "${target_platform}" == "osx-arm64" || "${target_platform}" == "linux-ppc64le" ]]; then
-    CMAKE_ARGS="${CMAKE_ARGS} -DCMAKE_THREAD_LIBS_INIT=-lpthread -DCMAKE_HAVE_THREADS_LIBRARY=1 -DCMAKE_USE_WIN32_THREADS_INIT=0 -DCMAKE_USE_PTHREADS_INIT=1 -DTHREADS_PREFER_PTHREAD_FLAG=ON"
+# The SDK's OpenGL framework, not an XQuartz libGL/libGLU found first with CMAKE_FIND_FRAMEWORK=LAST
+if [[ "${target_platform}" == osx-* ]]; then
+    OPENGL_FRAMEWORK="${CONDA_BUILD_SYSROOT}/System/Library/Frameworks/OpenGL.framework"
+    CMAKE_ARGS="${CMAKE_ARGS} -DOPENGL_gl_LIBRARY=${OPENGL_FRAMEWORK} -DOPENGL_glu_LIBRARY=${OPENGL_FRAMEWORK}"
 fi
 
 # Enable CUDA support
@@ -24,7 +25,7 @@ then
         echo "Unknown CUDA version ${cuda_compiler_version} for target platform ${target_platform}"
         exit 1
     fi
-    CMAKE_ARGS="${CMAKE_ARGS} -DBUILD_WITH_CUDA=ON -DCUDA_TOOLKIT_ROOT_DIR=${CUDA_TOOLKIT_ROOT_DIR} -DCUDAToolkit_ROOT=${CUDA_TOOLKIT_ROOT_DIR} -DCUDA_CUDART_LIBRARY=$PREFIX/lib/libcudart.so"
+    CMAKE_ARGS="${CMAKE_ARGS} -DBUILD_WITH_CUDA=ON -DCUDAToolkit_ROOT=${CUDA_TOOLKIT_ROOT_DIR}"
     if [[ "${target_platform}" == "linux-aarch64" && "${arm_variant_type}" == "tegra" ]]
     then
         CMAKE_ARGS="${CMAKE_ARGS} -DCMAKE_CUDA_ARCHITECTURES=$CUDAARCHS"
@@ -54,6 +55,11 @@ cmake ${CMAKE_ARGS} -GNinja \
       -DBUILD_EXAMPLES=OFF \
       -DBUILD_UNIT_TESTS=OFF \
       -DCHECK_FOR_UPDATES=OFF \
+      -DENABLE_STATS=OFF \
+      -DENABLE_AI_ASSISTANT=OFF \
+      -DBUILD_GLSL_EXTENSIONS=ON \
+      -DBUILD_GRAPHICAL_EXAMPLES=ON \
+      -DUSE_EXTERNAL_NLOHMANN_JSON=ON \
       -DCMAKE_VERBOSE_MAKEFILE=ON \
       -DBUILD_LEGACY_PYBACKEND=OFF \
       $SRC_DIR

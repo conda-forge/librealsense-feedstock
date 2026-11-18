@@ -1,5 +1,5 @@
 diff --git a/CMake/install_config.cmake b/CMake/install_config.cmake
-index 9f56666117..def27cb458 100644
+index 9f56666..def27cb 100644
 --- a/CMake/install_config.cmake
 +++ b/CMake/install_config.cmake
 @@ -47,5 +47,3 @@ install(FILES "${CMAKE_CURRENT_BINARY_DIR}/realsense2ConfigVersion.cmake"
@@ -7,4 +7,13 @@ index 9f56666117..def27cb458 100644
          DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig"
  )
 -
+-install(CODE "execute_process(COMMAND ldconfig)")
+diff --git a/src/gl/CMakeLists.txt b/src/gl/CMakeLists.txt
+index bb06a2a..cbc0678 100644
+--- a/src/gl/CMakeLists.txt
++++ b/src/gl/CMakeLists.txt
+@@ -129,4 +129,3 @@ install(FILES "${CMAKE_BINARY_DIR}/config/realsense2-gl.pc"
+         DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig"
+ )
+ 
 -install(CODE "execute_process(COMMAND ldconfig)")

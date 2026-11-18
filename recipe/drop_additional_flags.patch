@@ -1,10 +1,10 @@
 diff --git a/CMake/unix_config.cmake b/CMake/unix_config.cmake
-index f85c1f5..b561ccb 100644
+index 8127a5e..9c332f5 100644
 --- a/CMake/unix_config.cmake
 +++ b/CMake/unix_config.cmake
-@@ -18,32 +18,6 @@ macro(os_set_flags)
-     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pedantic -Wno-missing-field-initializers")
-     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-switch -Wno-multichar -Wsequence-point -Wformat -Wformat-security")
+@@ -23,31 +23,6 @@ macro(os_set_flags)
+     set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS}   -ffp-contract=off")
+     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ffp-contract=off")
  
 -    execute_process(COMMAND ${CMAKE_C_COMPILER} -dumpmachine OUTPUT_VARIABLE MACHINE)
 -    if(${MACHINE} MATCHES "arm64-*" OR ${MACHINE} MATCHES "aarch64-*")
@@ -30,7 +30,6 @@ index f85c1f5..b561ccb 100644
 -        message(STATUS "Building with SSE optimizations")
 -        set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS}   -mssse3")
 -        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mssse3")
--        set(LRS_TRY_USE_AVX true)
 -    endif(${MACHINE} MATCHES "arm64-*" OR ${MACHINE} MATCHES "aarch64-*")
  
      if(BUILD_WITH_OPENMP)

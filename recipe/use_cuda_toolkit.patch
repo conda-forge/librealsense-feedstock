@@ -1,0 +1,42 @@
+diff --git a/CMake/cuda_config.cmake b/CMake/cuda_config.cmake
+index 13bce2c..caddb6e 100644
+--- a/CMake/cuda_config.cmake
++++ b/CMake/cuda_config.cmake
+@@ -1,14 +1,21 @@
+ info("Building with CUDA..")
+ cmake_minimum_required(VERSION 3.10)
++# Architectures given by the user (e.g. -DCMAKE_CUDA_ARCHITECTURES=all) take precedence over
++# the list below; enable_language(CUDA) would otherwise define the variable itself
++if(DEFINED CMAKE_CUDA_ARCHITECTURES)
++    set(LRS_USER_CUDA_ARCHITECTURES ON)
++endif()
++
+ enable_language( CUDA )
+ 
+-find_package(CUDA REQUIRED)
++# FindCUDA (find_package(CUDA)) is deprecated (CMP0146); the CUDA language plus FindCUDAToolkit
++# provide the same. cudart is linked through the CUDA language (CMAKE_CUDA_RUNTIME_LIBRARY).
++find_package(CUDAToolkit REQUIRED)
++set(CUDA_VERSION ${CUDAToolkit_VERSION})
+ 
+-include_directories(${CUDA_INCLUDE_DIRS})
+-SET(ALL_CUDA_LIBS ${CUDA_LIBRARIES} ${CUDA_cusparse_LIBRARY} ${CUDA_cublas_LIBRARY})
+-SET(LIBS ${LIBS} ${ALL_CUDA_LIBS})
++include_directories(${CUDAToolkit_INCLUDE_DIRS})
+ 
+-message(STATUS "CUDA_LIBRARIES: ${CUDA_INCLUDE_DIRS} ${ALL_CUDA_LIBS}")
++message(STATUS "CUDA ${CUDA_VERSION}: ${CUDAToolkit_INCLUDE_DIRS}")
+ 
+ set(CUDA_PROPAGATE_HOST_FLAGS OFF)
+ set(CUDA_SEPARABLE_COMPILATION ON)
+@@ -47,7 +54,9 @@ if(CUDA_VERSION VERSION_GREATER_EQUAL "13.0")
+ endif()
+ 
+ # Check if variable is available (means CMake >= 3.18)
+-if(POLICY CMP0104)
++if(LRS_USER_CUDA_ARCHITECTURES)
++    message(STATUS "CUDA architectures: ${CMAKE_CUDA_ARCHITECTURES}")
++elseif(POLICY CMP0104)
+     # Use modern approach
+     cmake_policy(SET CMP0104 NEW)
+     set(CMAKE_CUDA_ARCHITECTURES ${CUDA_ARCH_LIST})

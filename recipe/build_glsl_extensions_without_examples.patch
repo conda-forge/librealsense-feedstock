@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 349d07a..c9cec5f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -91,7 +91,7 @@ global_target_config()
+ include(CMake/install_config.cmake)
+ 
+ add_subdirectory(wrappers)
+-if ( ( BUILD_EXAMPLES OR BUILD_PC_STITCHING ) AND BUILD_GLSL_EXTENSIONS )
++if ( BUILD_GLSL_EXTENSIONS )
+     find_package(glfw3 3.3 QUIET)
+     if(NOT TARGET glfw)
+         message(STATUS "GLFW 3.3 not found; using internal version")

@@ -1,0 +1,13 @@
+diff --git a/tools/CMakeLists.txt b/tools/CMakeLists.txt
+index a5f459c..31d35c0 100644
+--- a/tools/CMakeLists.txt
++++ b/tools/CMakeLists.txt
+@@ -26,7 +26,7 @@ if(BUILD_TOOLS)
+     endif()
+ endif()
+ 
+-if(BUILD_EXAMPLES)
++if(BUILD_EXAMPLES OR BUILD_GRAPHICAL_EXAMPLES)
+     if(BUILD_GRAPHICAL_EXAMPLES)
+         include(${PROJECT_SOURCE_DIR}/CMake/opengl_config.cmake)
+         if (NOT BUILD_GLSL_EXTENSIONS)
