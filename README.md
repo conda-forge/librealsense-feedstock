@@ -128,6 +128,7 @@ Current release info
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-librealsense-green.svg)](https://anaconda.org/conda-forge/librealsense) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/librealsense.svg)](https://anaconda.org/conda-forge/librealsense) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/librealsense.svg)](https://anaconda.org/conda-forge/librealsense) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/librealsense.svg)](https://anaconda.org/conda-forge/librealsense) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-pyrealsense2-green.svg)](https://anaconda.org/conda-forge/pyrealsense2) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/pyrealsense2.svg)](https://anaconda.org/conda-forge/pyrealsense2) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/pyrealsense2.svg)](https://anaconda.org/conda-forge/pyrealsense2) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/pyrealsense2.svg)](https://anaconda.org/conda-forge/pyrealsense2) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-realsense--viewer-green.svg)](https://anaconda.org/conda-forge/realsense-viewer) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/realsense-viewer.svg)](https://anaconda.org/conda-forge/realsense-viewer) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/realsense-viewer.svg)](https://anaconda.org/conda-forge/realsense-viewer) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/realsense-viewer.svg)](https://anaconda.org/conda-forge/realsense-viewer) |
 
 Installing librealsense
 =======================
@@ -146,7 +147,7 @@ How to use
 <summary>With conda</summary>
 
 ```
-conda install librealsense pyrealsense2
+conda install librealsense pyrealsense2 realsense-viewer
 ```
 
 </details>
@@ -155,7 +156,7 @@ conda install librealsense pyrealsense2
 <summary>With mamba</summary>
 
 ```
-mamba install librealsense pyrealsense2
+mamba install librealsense pyrealsense2 realsense-viewer
 ```
 
 </details>
@@ -165,9 +166,9 @@ mamba install librealsense pyrealsense2
 
 ```
 # for adding to your local project
-pixi add librealsense pyrealsense2
+pixi add librealsense pyrealsense2 realsense-viewer
 # for installing globally
-pixi global install librealsense pyrealsense2
+pixi global install librealsense pyrealsense2 realsense-viewer
 ```
 
 </details>
