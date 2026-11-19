@@ -47,10 +47,7 @@ outputs:
   - staging:
       name: librealsense-build
     build:
-      script:
-        - if: win
-          then: bld.bat
-          else: build.sh
+      script: build
     requirements:
       build:
         - if: build_platform != target_platform
