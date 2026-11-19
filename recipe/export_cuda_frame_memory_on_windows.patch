@@ -1,0 +1,69 @@
+diff --git a/src/cuda/cuda-frame-memory.h b/src/cuda/cuda-frame-memory.h
+index 88ae5cc..7e43a01 100644
+--- a/src/cuda/cuda-frame-memory.h
++++ b/src/cuda/cuda-frame-memory.h
+@@ -4,6 +4,16 @@
+ 
+ #include <cstddef>
+ 
++// realsense2-gl calls these (via src/frame.h), but realsense2.dll only exports what realsense.def
++// lists, so on Windows they have to be exported explicitly
++#if defined( _WIN32 ) && defined( realsense2_EXPORTS )
++#define LRS_FRAME_MEMORY_API __declspec( dllexport )
++#elif defined( _WIN32 ) && defined( realsense2_gl_EXPORTS )
++#define LRS_FRAME_MEMORY_API __declspec( dllimport )
++#else
++#define LRS_FRAME_MEMORY_API
++#endif
++
+ // Zero-copy frame memory helpers.
+ //
+ // These wrap CUDA pinned/mapped allocation behind a plain C++ interface so that
+@@ -19,21 +29,21 @@
+ namespace librealsense {
+ 
+ // True only when this is a zero-copy build AND the runtime GPU is integrated (Jetson).
+-bool rs_frame_zc_enabled();
++LRS_FRAME_MEMORY_API bool rs_frame_zc_enabled();
+ 
+ // Allocate `bytes` for a frame buffer. Returns cudaHostAlloc(cudaHostAllocMapped)
+ // memory when rs_frame_zc_enabled(), otherwise std::malloc. Never returns nullptr for
+ // a non-zero request (throws-free: returns nullptr only on genuine allocation failure).
+-void * rs_frame_zc_alloc( std::size_t bytes );
++LRS_FRAME_MEMORY_API void * rs_frame_zc_alloc( std::size_t bytes );
+ 
+ // Free a buffer obtained from rs_frame_zc_alloc(). Safe on nullptr.
+-void rs_frame_zc_free( void * p );
++LRS_FRAME_MEMORY_API void rs_frame_zc_free( void * p );
+ 
+ // For a host pointer returned by rs_frame_zc_alloc() under zero-copy, return the GPU
+ // device pointer aliasing the same memory (cudaHostGetDevicePointer). Returns nullptr
+ // when the pointer is not mapped (plain malloc, discrete GPU, or non-zero-copy build),
+ // in which case the caller must fall back to cudaMalloc + cudaMemcpy.
+-void * rs_frame_zc_device_ptr( const void * host_ptr );
++LRS_FRAME_MEMORY_API void * rs_frame_zc_device_ptr( const void * host_ptr );
+ 
+ // Register a V4L2 (or any externally-mmap'd) capture buffer with CUDA so the
+ // GPU can read it directly via cudaHostGetDevicePointer. Registered with
+@@ -41,17 +51,17 @@ void * rs_frame_zc_device_ptr( const void * host_ptr );
+ // zero-copy build on an integrated GPU. Must be paired with rs_v4l2_zc_unregister before
+ // the buffer is munmap'd/freed. Idempotent-safe: a failed register simply leaves the
+ // buffer unmapped to the GPU, so the pipeline falls back to the copy path.
+-bool rs_v4l2_zc_register( void * ptr, std::size_t len );
+-void rs_v4l2_zc_unregister( void * ptr );
++LRS_FRAME_MEMORY_API bool rs_v4l2_zc_register( void * ptr, std::size_t len );
++LRS_FRAME_MEMORY_API void rs_v4l2_zc_unregister( void * ptr );
+ 
+ // Upload `bytes` of host frame data to a per-frame cached device buffer and return its device
+ // pointer. `*cached`/`*capacity` hold the frame's reused device buffer: (re)allocated via
+ // cudaMalloc only when it must grow, then cudaMemcpy host->device each call. This backs
+ // get_gpu_data_or_upload() on builds/platforms where true zero-copy isn't available -- it is a
+ // real copy, just SDK-managed and amortized across the frame pool. Returns nullptr on failure.
+-void * rs_frame_gpu_upload( void ** cached, std::size_t * capacity, const void * host, std::size_t bytes );
++LRS_FRAME_MEMORY_API void * rs_frame_gpu_upload( void ** cached, std::size_t * capacity, const void * host, std::size_t bytes );
+ 
+ // Free a device buffer obtained from rs_frame_gpu_upload (cudaFree). Safe on nullptr.
+-void rs_frame_gpu_free( void * buf );
++LRS_FRAME_MEMORY_API void rs_frame_gpu_free( void * buf );
+ 
+ }  // namespace librealsense

@@ -31,6 +31,8 @@ source:
     - fix_rs2_option_enum_range.patch
     # realsense-viewer without the examples, https://github.com/conda-forge/librealsense-feedstock/issues/49
     - build_graphical_tools_without_examples.patch
+    # realsense2-gl with CUDA on Windows: CUDA frame-memory helpers not exported from realsense2.dll
+    - export_cuda_frame_memory_on_windows.patch
 
 build:
   number: ${{ build_number }}
