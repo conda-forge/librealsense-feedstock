@@ -110,29 +110,19 @@ outputs:
         # See https://github.com/IntelRealSense/librealsense/pull/3449
         - ${{ pin_subpackage("librealsense", upper_bound="x.x") }}
     tests:
-      - script:
-          - if: not win
-            then:
-              - test -f ${PREFIX}/include/librealsense2/rs.hpp
-              - test -f ${PREFIX}/lib/cmake/realsense2/realsense2Config.cmake
-              - test -f ${PREFIX}/include/librealsense2-gl/rs_processing_gl.hpp
-              - test -f ${PREFIX}/lib/cmake/realsense2-gl/realsense2-glConfig.cmake
-          - if: linux
-            then:
-              - test -f ${PREFIX}/lib/librealsense2.so
-              - test -f ${PREFIX}/lib/librealsense2-gl.so
-          - if: osx
-            then:
-              - test -f ${PREFIX}/lib/librealsense2.dylib
-              - test -f ${PREFIX}/lib/librealsense2-gl.dylib
-          - if: win
-            then:
-              - if not exist %PREFIX%\Library\include\librealsense2\rs.hpp exit 1
-              - if not exist %PREFIX%\Library\lib\realsense2.lib exit 1
-              - if not exist %PREFIX%\Library\bin\realsense2.dll exit 1
-              - if not exist %PREFIX%\Library\bin\realsense2-gl.dll exit 1
-              - if not exist %PREFIX%\Library\lib\cmake\realsense2-gl\realsense2-glConfig.cmake exit 1
-              - if not exist %PREFIX%\Library\lib\cmake\realsense2\realsense2Config.cmake exit 1
+      - package_contents:
+          include:
+            - librealsense2/rs.hpp
+            - librealsense2-gl/rs_processing_gl.hpp
+          lib:
+            - realsense2
+            - realsense2-gl
+          files:
+            exists:
+              - "**/cmake/realsense2/realsense2Config.cmake"
+              - "**/cmake/realsense2-gl/realsense2-glConfig.cmake"
+            not_exists:
+              - "**/bin/realsense-viewer*"
 
   - package:
       name: realsense-viewer
@@ -148,14 +138,11 @@ outputs:
       run:
         - ${{ pin_subpackage("librealsense", exact=True) }}
     tests:
-      - script:
-          - if: unix
-            then:
-              - test -f ${PREFIX}/bin/realsense-viewer
-              - test -f ${PREFIX}/bin/rs-depth-quality
-            else:
-              - if not exist %PREFIX%\Library\bin\realsense-viewer.exe exit 1
-              - if not exist %PREFIX%\Library\bin\rs-depth-quality.exe exit 1
+      - package_contents:
+          bin:
+            - realsense-viewer
+            - rs-depth-quality
+            - rs-rosbag-inspector
 
   # Compatibility metapackage: the bindings are installed into librealsense,
   # as they were in the v0 recipe. Host numpy contributes its run export.
