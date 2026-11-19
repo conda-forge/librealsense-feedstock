@@ -3,16 +3,47 @@ About librealsense-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/librealsense-feedstock/blob/main/LICENSE.txt)
 
+
+About librealsense
+------------------
+
 Home: https://github.com/IntelRealSense/librealsense
 
-Package license: Apache-2.0
+Package license: Apache-2.0 AND MIT AND BSD-2-Clause AND BSD-3-Clause
 
 Summary: Cross-platform library for Intel® RealSense™ depth and tracking cameras.
 
 Development: https://github.com/IntelRealSense/librealsense
 
-This feedstock packages the C++ library `librealsense` and the Python library
-`pyrealsense2`. The packages are built enabling the `FORCE_RSUSB_BACKEND`
+This feedstock packages the C++ library `librealsense` (including the
+`realsense2-gl` GLSL extension module), the Python library `pyrealsense2`,
+and `realsense-viewer`. The `realsense-viewer` package contains the graphical
+tools `realsense-viewer`, `rs-depth-quality` and `rs-rosbag-inspector`; the
+command-line tools (`rs-enumerate-devices`, `rs-fw-update`, ...) stay in
+`librealsense`. The packages are built enabling the `FORCE_RSUSB_BACKEND`
+CMake option, and they are available for all Linux and macOS platforms
+supported by conda-forge, including `linux-aarch64` for Nvidia Jetson boards.
+CUDA-enabled packages should be selected automatically on CUDA-capable
+platforms. Use `librealsense=*=*cuda*` to force a CUDA build or
+`librealsense=*=*cpu*` to force a CPU-only build.
+
+About realsense-viewer
+----------------------
+
+Home: https://github.com/IntelRealSense/librealsense
+
+Package license: Apache-2.0 AND MIT AND BSD-2-Clause AND BSD-3-Clause AND Zlib AND OFL-1.1
+
+Summary: Graphical tools for Intel® RealSense™ cameras (realsense-viewer, rs-depth-quality, rs-rosbag-inspector).
+
+Development: https://github.com/IntelRealSense/librealsense
+
+This feedstock packages the C++ library `librealsense` (including the
+`realsense2-gl` GLSL extension module), the Python library `pyrealsense2`,
+and `realsense-viewer`. The `realsense-viewer` package contains the graphical
+tools `realsense-viewer`, `rs-depth-quality` and `rs-rosbag-inspector`; the
+command-line tools (`rs-enumerate-devices`, `rs-fw-update`, ...) stay in
+`librealsense`. The packages are built enabling the `FORCE_RSUSB_BACKEND`
 CMake option, and they are available for all Linux and macOS platforms
 supported by conda-forge, including `linux-aarch64` for Nvidia Jetson boards.
 CUDA-enabled packages should be selected automatically on CUDA-capable
