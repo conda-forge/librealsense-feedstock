@@ -1,0 +1,40 @@
+diff --git a/config/librealsense-gl.pc.in b/config/librealsense-gl.pc.in
+index 2345cf0..47268e6 100644
+--- a/config/librealsense-gl.pc.in
++++ b/config/librealsense-gl.pc.in
+@@ -1,15 +1,14 @@
+ prefix=@CMAKE_INSTALL_PREFIX@
+ exec_prefix=${prefix}
+ includedir=${prefix}/include
+-#TODO: libdir=${exec_prefix}/lib@MULTI_ARCH_SUFFIX@
+-libdir= ${prefix}/lib/x86_64-linux-gnu
++libdir=${exec_prefix}/@CMAKE_INSTALL_LIBDIR@
+ 
+ Name: realsense2-gl
+ Description: Intel(R) RealSense(tm) GLSL Extension Module
+ Version: @REALSENSE-GL_VERSION_STRING@
+ URL: https://github.com/realsenseai/librealsense
+-Requires.private: @LRS_LIB_NAME@
+-Libs: -L${libdir} -l@LRS_LIB_NAME@
++Requires: @LRS_LIB_NAME@
++Libs: -L${libdir} -l@LRS_GL_LIB_NAME@
+ Libs.private: @LRS_PKG_LIBS@
+ Cflags: -I${includedir}
+ 
+diff --git a/config/librealsense.pc.in b/config/librealsense.pc.in
+index 2c4cb3e..ed85b6c 100644
+--- a/config/librealsense.pc.in
++++ b/config/librealsense.pc.in
+@@ -1,10 +1,9 @@
+ prefix=@CMAKE_INSTALL_PREFIX@
+ exec_prefix=${prefix}
+ includedir=${prefix}/include
+-#TODO: libdir=${exec_prefix}/lib@MULTI_ARCH_SUFFIX@
+-libdir= ${prefix}/lib/x86_64-linux-gnu
++libdir=${exec_prefix}/@CMAKE_INSTALL_LIBDIR@
+ 
+-Name:
++Name: realsense2
+ Description: Intel(R) RealSense(tm) Cross Platform API
+ Version: @REALSENSE_VERSION_STRING@
+ URL: https://github.com/realsenseai/librealsense
