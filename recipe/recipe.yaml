@@ -112,7 +112,7 @@ outputs:
           then: __cuda
       run_exports:
         # See https://github.com/IntelRealSense/librealsense/pull/3449
-        - ${{ pin_subpackage("librealsense", upper_bound="x.x") }}
+        - ${{ pin_subpackage("librealsense", upper_bound="x.x.x") }}
     tests:
       - package_contents:
           include:
