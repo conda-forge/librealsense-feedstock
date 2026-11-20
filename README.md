@@ -3,16 +3,47 @@ About librealsense-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/librealsense-feedstock/blob/main/LICENSE.txt)
 
+
+About librealsense
+------------------
+
 Home: https://github.com/IntelRealSense/librealsense
 
-Package license: Apache-2.0
+Package license: Apache-2.0 AND MIT AND BSD-2-Clause AND BSD-3-Clause
 
 Summary: Cross-platform library for Intel® RealSense™ depth and tracking cameras.
 
 Development: https://github.com/IntelRealSense/librealsense
 
-This feedstock packages the C++ library `librealsense` and the Python library
-`pyrealsense2`. The packages are built enabling the `FORCE_RSUSB_BACKEND`
+This feedstock packages the C++ library `librealsense` (including the
+`realsense2-gl` GLSL extension module), the Python library `pyrealsense2`,
+and `realsense-viewer`. The `realsense-viewer` package contains the graphical
+tools `realsense-viewer`, `rs-depth-quality` and `rs-rosbag-inspector`; the
+command-line tools (`rs-enumerate-devices`, `rs-fw-update`, ...) stay in
+`librealsense`. The packages are built enabling the `FORCE_RSUSB_BACKEND`
+CMake option, and they are available for all Linux and macOS platforms
+supported by conda-forge, including `linux-aarch64` for Nvidia Jetson boards.
+CUDA-enabled packages should be selected automatically on CUDA-capable
+platforms. Use `librealsense=*=*cuda*` to force a CUDA build or
+`librealsense=*=*cpu*` to force a CPU-only build.
+
+About realsense-viewer
+----------------------
+
+Home: https://github.com/IntelRealSense/librealsense
+
+Package license: Apache-2.0 AND MIT AND BSD-2-Clause AND BSD-3-Clause AND Zlib AND OFL-1.1
+
+Summary: Graphical tools for Intel® RealSense™ cameras (realsense-viewer, rs-depth-quality, rs-rosbag-inspector).
+
+Development: https://github.com/IntelRealSense/librealsense
+
+This feedstock packages the C++ library `librealsense` (including the
+`realsense2-gl` GLSL extension module), the Python library `pyrealsense2`,
+and `realsense-viewer`. The `realsense-viewer` package contains the graphical
+tools `realsense-viewer`, `rs-depth-quality` and `rs-rosbag-inspector`; the
+command-line tools (`rs-enumerate-devices`, `rs-fw-update`, ...) stay in
+`librealsense`. The packages are built enabling the `FORCE_RSUSB_BACKEND`
 CMake option, and they are available for all Linux and macOS platforms
 supported by conda-forge, including `linux-aarch64` for Nvidia Jetson boards.
 CUDA-enabled packages should be selected automatically on CUDA-capable
@@ -128,6 +159,7 @@ Current release info
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-librealsense-green.svg)](https://anaconda.org/conda-forge/librealsense) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/librealsense.svg)](https://anaconda.org/conda-forge/librealsense) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/librealsense.svg)](https://anaconda.org/conda-forge/librealsense) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/librealsense.svg)](https://anaconda.org/conda-forge/librealsense) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-pyrealsense2-green.svg)](https://anaconda.org/conda-forge/pyrealsense2) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/pyrealsense2.svg)](https://anaconda.org/conda-forge/pyrealsense2) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/pyrealsense2.svg)](https://anaconda.org/conda-forge/pyrealsense2) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/pyrealsense2.svg)](https://anaconda.org/conda-forge/pyrealsense2) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-realsense--viewer-green.svg)](https://anaconda.org/conda-forge/realsense-viewer) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/realsense-viewer.svg)](https://anaconda.org/conda-forge/realsense-viewer) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/realsense-viewer.svg)](https://anaconda.org/conda-forge/realsense-viewer) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/realsense-viewer.svg)](https://anaconda.org/conda-forge/realsense-viewer) |
 
 Installing librealsense
 =======================
@@ -146,7 +178,7 @@ How to use
 <summary>With conda</summary>
 
 ```
-conda install librealsense pyrealsense2
+conda install librealsense pyrealsense2 realsense-viewer
 ```
 
 </details>
@@ -155,7 +187,7 @@ conda install librealsense pyrealsense2
 <summary>With mamba</summary>
 
 ```
-mamba install librealsense pyrealsense2
+mamba install librealsense pyrealsense2 realsense-viewer
 ```
 
 </details>
@@ -165,9 +197,9 @@ mamba install librealsense pyrealsense2
 
 ```
 # for adding to your local project
-pixi add librealsense pyrealsense2
+pixi add librealsense pyrealsense2 realsense-viewer
 # for installing globally
-pixi global install librealsense pyrealsense2
+pixi global install librealsense pyrealsense2 realsense-viewer
 ```
 
 </details>

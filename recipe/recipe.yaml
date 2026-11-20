@@ -2,13 +2,13 @@ schema_version: 1
 
 context:
   name: librealsense
-  version: "2.58.3"
+  version: "2.59.2"
   # Order of priority:
   # CUDA (+200)
   # CUDA with arm-variant=tegra (+150)
   # CPU (+0)
   # See https://github.com/conda-forge/librealsense-feedstock/issues/41
-  build_number: 2
+  build_number: 0
   build_prefix: ${{ "cuda" ~ (cuda_compiler_version | version_to_buildstring) if cuda_compiler_version != "None" else "cpu" }}
 
 recipe:
@@ -17,14 +17,24 @@ recipe:
 
 source:
   url: https://github.com/IntelRealSense/librealsense/archive/v${{ version }}.tar.gz
-  sha256: 6a4c59180950bd9ced58a3dfc4ded586ed22dfc9c418684e7fc8c241b9aaac98
+  sha256: a41a1533795c582ea12ba652ac6fe7cb97eed08fe9c91ba4fefed5bc044bc88c
   patches:
     - drop_additional_flags.patch
     - do_not_run_ldconfig_on_install.patch
     - devendor_pybind11.patch
-    - devendor_nlohmann_json.patch
-    - fix_pybind11_keepalive.patch
     - fix_pyd_windows_install.patch
+    # https://github.com/conda-forge/librealsense-feedstock/issues/94
+    - build_glsl_extensions_without_examples.patch
+    # https://github.com/conda-forge/librealsense-feedstock/issues/66
+    - use_cuda_toolkit.patch
+    # clang 21: rs2_option(RS2_OPTION_COUNT + 10) is not a constant expression, as the value is out of range
+    - fix_rs2_option_enum_range.patch
+    # realsense-viewer without the examples, https://github.com/conda-forge/librealsense-feedstock/issues/49
+    - build_graphical_tools_without_examples.patch
+    # realsense2-gl with CUDA on Windows: CUDA frame-memory helpers not exported from realsense2.dll
+    - export_cuda_frame_memory_on_windows.patch
+    # realsense2(-gl).pc: use the real libdir, and link realsense2-gl in realsense2-gl.pc
+    - fix_pkgconfig_files.patch
 
 build:
   number: ${{ build_number }}
@@ -39,10 +49,7 @@ outputs:
   - staging:
       name: librealsense-build
     build:
-      script:
-        - if: win
-          then: bld.bat
-          else: build.sh
+      script: build
     requirements:
       build:
         - if: build_platform != target_platform
@@ -70,6 +77,14 @@ outputs:
         - pybind11-abi
         - nlohmann_json
         - pybind11_json
+        # realsense2-gl (BUILD_GLSL_EXTENSIONS)
+        - glfw
+        - if: linux
+          then:
+            - libgl-devel
+            - libopengl-devel
+            # GL/glu.h for realsense-viewer
+            - libglu
         - if: cuda_compiler_version != "None"
           then:
             - cuda-version ==${{ cuda_compiler_version }}
@@ -83,29 +98,75 @@ outputs:
     inherit: librealsense-build
     build:
       string: ${{ build_prefix }}_py${{ python | version_to_buildstring }}_h${{ hash }}_${{ build_number }}
+      files:
+        exclude:
+          # graphical tools, in realsense-viewer
+          - "*bin/realsense-viewer*"
+          - "*bin/rs-depth-quality*"
+          - "*bin/rs-rosbag-inspector*"
     requirements:
       run:
+        # realsense2Config.cmake calls find_dependency(nlohmann_json)
+        - nlohmann_json
         - if: cuda_compiler_version != "None"
           then: __cuda
       run_exports:
         # See https://github.com/IntelRealSense/librealsense/pull/3449
-        - ${{ pin_subpackage("librealsense", upper_bound="x.x") }}
+        - ${{ pin_subpackage("librealsense", upper_bound="x.x.x") }}
     tests:
-      - script:
-          - if: not win
+      - package_contents:
+          include:
+            - librealsense2/rs.hpp
+            - librealsense2-gl/rs_processing_gl.hpp
+          lib:
+            - realsense2
+            - realsense2-gl
+          files:
+            exists:
+              - "**/cmake/realsense2/realsense2Config.cmake"
+              - "**/cmake/realsense2-gl/realsense2-glConfig.cmake"
+            not_exists:
+              - "**/bin/realsense-viewer*"
+      - requirements:
+          run:
+            - cmake-package-check
+            - ${{ compiler('c') }}
+            - ${{ compiler('cxx') }}
+            - if: unix
+              then: pkg-config
+        files:
+          recipe:
+            - test/pkgconfig_consumer.cpp
+        script:
+          - cmake-package-check realsense2 --targets realsense2::realsense2
+          - cmake-package-check realsense2-gl --targets realsense2-gl::realsense2-gl
+          - if: unix
             then:
-              - test -f ${PREFIX}/include/librealsense2/rs.hpp
-              - test -f ${PREFIX}/lib/cmake/realsense2/realsense2Config.cmake
-          - if: linux
-            then: test -f ${PREFIX}/lib/librealsense2.so
-          - if: osx
-            then: test -f ${PREFIX}/lib/librealsense2.dylib
-          - if: win
-            then:
-              - if not exist %PREFIX%\Library\include\librealsense2\rs.hpp exit 1
-              - if not exist %PREFIX%\Library\lib\realsense2.lib exit 1
-              - if not exist %PREFIX%\Library\bin\realsense2.dll exit 1
-              - if not exist %PREFIX%\Library\lib\cmake\realsense2\realsense2Config.cmake exit 1
+              - ${CXX} test/pkgconfig_consumer.cpp -o pkgconfig_consumer $(pkg-config --cflags --libs realsense2-gl)
+
+  - package:
+      name: realsense-viewer
+    inherit: librealsense-build
+    build:
+      string: ${{ build_prefix }}_py${{ python | version_to_buildstring }}_h${{ hash }}_${{ build_number }}
+      files:
+        include:
+          - "*bin/realsense-viewer*"
+          - "*bin/rs-depth-quality*"
+          - "*bin/rs-rosbag-inspector*"
+    requirements:
+      run:
+        - ${{ pin_subpackage("librealsense", exact=True) }}
+    about:
+      summary: Graphical tools for Intel® RealSense™ cameras (realsense-viewer, rs-depth-quality, rs-rosbag-inspector).
+      # bundles imgui, implot, glad (MIT), tinyfiledialogs (Zlib) and the Karla and Font Awesome fonts (OFL-1.1)
+      license: Apache-2.0 AND MIT AND BSD-2-Clause AND BSD-3-Clause AND Zlib AND OFL-1.1
+    tests:
+      - package_contents:
+          bin:
+            - realsense-viewer
+            - rs-depth-quality
+            - rs-rosbag-inspector
 
   # Compatibility metapackage: the bindings are installed into librealsense,
   # as they were in the v0 recipe. Host numpy contributes its run export.
@@ -128,12 +189,20 @@ outputs:
 about:
   homepage: https://github.com/IntelRealSense/librealsense
   repository: https://github.com/IntelRealSense/librealsense
-  license: Apache-2.0
-  license_file: LICENSE
+  # bundled third-party components are listed with their licenses in NOTICE.md:
+  # easyloggingpp, rapidxml, glad (MIT), lz4 (BSD-2-Clause), rosbag/ros_comm (BSD-3-Clause)
+  license: Apache-2.0 AND MIT AND BSD-2-Clause AND BSD-3-Clause
+  license_file:
+    - LICENSE
+    - NOTICE.md
   summary: Cross-platform library for Intel® RealSense™ depth and tracking cameras.
   description: |
-    This feedstock packages the C++ library `librealsense` and the Python library
-    `pyrealsense2`. The packages are built enabling the `FORCE_RSUSB_BACKEND`
+    This feedstock packages the C++ library `librealsense` (including the
+    `realsense2-gl` GLSL extension module), the Python library `pyrealsense2`,
+    and `realsense-viewer`. The `realsense-viewer` package contains the graphical
+    tools `realsense-viewer`, `rs-depth-quality` and `rs-rosbag-inspector`; the
+    command-line tools (`rs-enumerate-devices`, `rs-fw-update`, ...) stay in
+    `librealsense`. The packages are built enabling the `FORCE_RSUSB_BACKEND`
     CMake option, and they are available for all Linux and macOS platforms
     supported by conda-forge, including `linux-aarch64` for Nvidia Jetson boards.
     CUDA-enabled packages should be selected automatically on CUDA-capable
